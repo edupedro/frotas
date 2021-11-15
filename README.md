@@ -1,4 +1,3 @@
-```
 # Frotas
 
 Um parágrafo da descrição do projeto vai aqui
@@ -98,4 +97,4 @@ Este projeto está sob a licença (sua licença) - veja o arquivo [LICENSE.md](h
 
 ---
 [Eduardo Andrade](https://gist.github.com/edupedro)
-```
+
