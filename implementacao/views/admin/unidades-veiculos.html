@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="pt-br">
+<!--<![endif]-->
+
+<head>
+	<meta charset="utf-8" />
+	<title>{$pagina['titulo']}</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<meta content="{$pagina['descricao']}" name="description" />
+	<meta content="{$pagina['autor']}" name="author" />
+	<meta content="{$pagina['palavras']}" name="keywords" />
+	
+	<link rel="shortcut icon" href="/res/admin/assets/img/fav.png" type="image/x-icon">	
+	
+	<!-- ================== BEGIN BASE CSS STYLE ================== -->
+	<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+	<link href="/res/admin/assets/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css" rel="stylesheet" />
+	<link href="/res/admin/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="/res/admin/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+	<link href="/res/admin/assets/css/animate.min.css" rel="stylesheet" />
+	<link href="/res/admin/assets/css/style.css" rel="stylesheet" />
+	<link href="/res/admin/assets/css/style-responsive.min.css" rel="stylesheet" />
+	<link href="/res/admin/assets/css/theme/default.css" rel="stylesheet" id="theme" />
+	<!-- ================== END BASE CSS STYLE ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL CSS STYLE ================== -->
+	<link href="/res/admin/assets/plugins/jquery-notifyjs/styles/metro/notify-metro.css" rel="stylesheet" type="text/css" />	
+	<!-- ================== END PAGE LEVEL CSS STYLE ================== -->
+
+	<!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
+  	<link href="/res/admin/assets/plugins/isotope/isotope.css" rel="stylesheet" />
+  	<link href="/res/admin/assets/plugins/lightbox/css/lightbox.css" rel="stylesheet" />
+	<!-- ================== END PAGE LEVEL STYLE ================== -->
+	
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="/res/admin/assets/plugins/pace/pace.min.js"></script>
+	<!-- ================== END BASE JS ================== -->
+	
+</head>
+<body>
+	<!-- begin #page-loader -->
+	<div id="page-loader" class="fade in"><span class="spinner"></span></div>
+	<!-- end #page-loader -->
+	
+	<!-- begin #page-container -->
+	<div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+	
+		<!-- begin #header -->
+		{include="header_include"}
+		<!-- end #header -->
+		
+		<!-- begin #sidebar -->
+		{include="menu"}
+		<!-- end #sidebar -->
+		
+		<!-- begin #content -->
+		<div id="content" class="content">
+		
+			<!-- begin breadcrumb -->
+			<ol class="breadcrumb pull-right">
+				<li><a href="/admin" title="Início">Início</a></li>
+				<li class="active">{$funcionalidade['funcionalidade']}</li>
+			</ol>
+			<!-- end breadcrumb -->
+			<!-- begin page-header -->
+			<h1 class="page-header">{$funcionalidade['funcionalidade']}<small>&nbsp;&nbsp; {$funcionalidade['detalhe']}</small></h1>
+			<!-- end page-header -->
+			
+			{if="$processamento==1"}
+              	{if="$temErro==1"}
+					<div id="msgErro1" class="alert alert-danger fade in" style="display: block;">
+						<strong>Erro</strong><br>{$msgProcessamento}
+					</div>
+				{else}
+					<div id="msgErro2" class="alert alert-success fade in" style="display: block;">
+						{$msgProcessamento}
+					</div>					
+				{/if}
+            {/if}	                			
+			
+			
+            <div id="options" class="m-b-10">
+                <span class="gallery-option-set" id="filter" data-option-key="filter">
+                    <a href="#" onclick="cadastrarSolicitar();" class="btn btn-default btn-xs active" data-option-value="*">
+                        Todas as Unidades
+                    </a>
+                    {loop="$listaLocais" as $item}
+	                    <a href="#gallery-group-{$item.idLocal}" class="btn btn-default btn-xs" data-option-value=".gallery-group-{$item.idLocal}">
+	                        {$item.local}
+	                    </a>                    
+                    {/loop}
+                    <a href="#gallery-group-1" class="btn btn-default btn-xs" data-option-value=".gallery-group-1">
+                        Secretaria de Educação
+                    </a>                    
+                    <a href="#gallery-group-2" class="btn btn-default btn-xs" data-option-value=".gallery-group-2">
+                        Secretaria da Fazenda
+                    </a>                    
+                    
+                </span>
+            </div>
+            
+			<!-- begin wrapper -->
+			<div class="wrapper bg-silver-lighter clearfix">             
+				<div class="btn-group pull-right">
+					{if="$paginaAtual>1"}
+						<button class='btn btn-white btn-sm' onclick='mudarPagina({$paginaAtual-1});' title='Página {$paginaAtual-1}'><i class='fa fa-chevron-left'></i></button>
+					{/if}									
+					<button class='btn btn-white btn-sm' onclick='mudarPagina({$paginaAtual+1});' title='Página {$paginaAtual+1}'><i class='fa fa-chevron-right'></i></button>
+				</div>
+				<div class="m-t-5">Página {$paginaAtual}, total de {$qtdPaginas} páginas</div>
+			</div>
+			<!-- end wrapper -->
+			
+            <div id="gallery" class="gallery">
+            	{loop="$listaAgendamentos" as $item}
+					<div class="image gallery-group-{$item.AgendaDia.Agenda.idLocal} isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px);">
+	                    <div class="image-inner" style="text-align: center;">
+							<a href="#">
+	                            {if="$item.atendido=='true'"}
+    	                            <img src="/res/admin/assets/img/agenda-confirmado.png" alt="" />
+	                            {else}
+		                            {if="$item.atrasado=='true'"}
+	    	                            <img src="/res/admin/assets/img/agenda-pendente.png" alt="" />
+		                            {else}
+	                                	<!--<img src="/res/admin/assets/img/agenda-cancelado.png" alt="" />-->
+	    	                            <img src="/res/admin/assets/img/agenda-pendente.png" alt="" />
+		                            {/if}
+	                            {/if}
+	                        </a>
+	                        <p class="image-caption">
+	                            {$item.AgendaDia.dataReferencia}
+	                        </p>
+	                    </div>
+	                    <div class="image-info">
+	                        <h5 class="title">{$item.Paciente.paciente}</h5>
+	                        <div class="pull-right">
+	                            <a href="#">{$item.Paciente.grupoPrioritario}</a>
+	                        </div>
+	                        <div class="rating">
+	                            <span class="star active"></span>
+	                            <span class="star active"></span>
+	                            <span class="star"></span>
+	                            <span class="star"></span>
+	                        </div>
+	                        <div class="desc">
+	                        	Data de Nascimento: <strong>{$item.Paciente.dataNascimento}</strong> <br/>
+	                        	Idade: <strong>{$item.Paciente.idade}</strong> Telefone: <strong>{$item.Paciente.telefone}</strong> <br/>
+	                        	Cartão SUS: <strong>{$item.Paciente.cartaoSus}</strong> 	                        	
+	                        </div>
+	                    </div>
+	                </div>            
+            	{/loop}
+                <div class="image gallery-group-1 isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px);">
+                    <div class="image-inner" style="text-align: center;">
+                        <a href="/res/admin/assets/img/gallery/gallery-1.jpg" data-lightbox="gallery-group-1">
+                            <img src="/res/admin/assets/img/gallery/gallery-1.jpg" alt="" />
+                        </a>
+                        <p class="image-caption">
+                            #1382 - 3D Arch
+                        </p>
+                    </div>
+                    <div class="image-info">
+                        <h5 class="title">Lorem ipsum dolor sit amet</h5>
+                        <div class="pull-right">
+                            <small>by</small> <a href="javascript:;">Sean Ngu</a>
+                        </div>
+                        <div class="rating">
+                            <span class="star active"></span>
+                            <span class="star active"></span>
+                            <span class="star active"></span>
+                            <span class="star"></span>
+                            <span class="star"></span>
+                        </div>
+                        <div class="desc">
+                            Nunc velit urna, aliquam at interdum sit amet non luctus justo blandit.
+                        </div>
+                    </div>
+                </div>
+                <div class="image gallery-group-2 isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px);">
+                    <div class="image-inner" style="text-align: center;">
+                        <a href="/res/admin/assets/img/gallery/gallery-2.jpg" data-lightbox="gallery-group-1">
+                            <img src="/res/admin/assets/img/gallery/gallery-2.jpg" alt="" />
+                        </a>
+                        <p class="image-caption">
+                            #2343 - Madness Arch
+                        </p>
+                    </div>
+                    <div class="image-info">
+                        <h5 class="title">Fusce aliquet ac quam at tincidunt</h5>
+                        <div class="pull-right">
+                            <small>by</small> <a href="javascript:;">Camryn Wong</a>
+                        </div>
+                        <div class="rating">
+                            <span class="star active"></span>
+                            <span class="star active"></span>
+                            <span class="star"></span>
+                            <span class="star"></span>
+                            <span class="star"></span>
+                        </div>
+                        <div class="desc">
+                            Fusce eu rutrum nisi, ut pretium mi. Sed mollis nisi sed auctor molestie. Vestibulum dictum pharetra leo sed euismod.
+                        </div>
+                    </div>
+                </div>            	
+            </div>
+            
+			<!-- begin wrapper -->
+			<div class="wrapper bg-silver-lighter clearfix">             
+				<div class="btn-group pull-right">
+					{if="$paginaAtual>1"}
+						<button class='btn btn-white btn-sm' onclick='mudarPagina({$paginaAtual-1});' title='Página {$paginaAtual-1}'><i class='fa fa-chevron-left'></i></button>
+					{/if}									
+					<button class='btn btn-white btn-sm' onclick='mudarPagina({$paginaAtual+1});' title='Página {$paginaAtual+1}'><i class='fa fa-chevron-right'></i></button>
+				</div>
+				<div class="m-t-5">Página {$paginaAtual}, total de {$qtdPaginas} páginas</div>
+			</div>
+			<!-- end wrapper -->
+            
+		</div>
+		<!-- end #content -->
+		
+		<!-- begin #footer -->
+		<div id="footer" class="footer">
+		    {$pagina['rodape']}
+		</div>
+		<!-- end #footer -->					
+		
+		<!-- begin scroll to top btn -->
+		<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+		<!-- end scroll to top btn -->	
+	</div>
+	<!-- end page container -->
+	
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="/res/admin/assets/plugins/jquery/jquery-1.9.1.min.js"></script>
+	<script src="/res/admin/assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
+	<script src="/res/admin/assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
+	<script src="/res/admin/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<!--[if lt IE 9]>
+		<script src="/res/admin/assets/crossbrowserjs/html5shiv.js"></script>
+		<script src="/res/admin/assets/crossbrowserjs/respond.min.js"></script>
+		<script src="/res/admin/assets/crossbrowserjs/excanvas.min.js"></script>
+	<![endif]-->
+	<script src="/res/admin/assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="/res/admin/assets/plugins/jquery-cookie/jquery.cookie.js"></script>
+	<!-- ================== END BASE JS ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+	<script src="/res/admin/assets/plugins/isotope/jquery.isotope.min.js"></script>
+  	<script src="/res/admin/assets/plugins/lightbox/js/lightbox-2.6.min.js"></script>
+	<script src="/res/admin/assets/js/gallery.demo.min.js"></script>
+	<script src="/res/admin/assets/js/apps.min.js"></script>
+	<!-- ================== END PAGE LEVEL JS ================== -->
+	
+	<!-- Specific Page Scripts Put Here -->
+	<script src="/res/admin/assets/plugins/jquery-notifyjs/notify.min.js"></script>
+	<script src="/res/admin/assets/plugins/jquery-notifyjs/styles/metro/notify-metro.js"></script>
+	<script src="/res/admin/assets/js/valida.js"></script>
+	<script src="/res/admin/assets/js/jquery.validate.min.js"></script>
+	<script src="/res/admin/assets/js/jquery.mask.min.js" type="text/javascript"></script>
+	
+	<script>
+		$(document).ready(function() {
+			App.init();
+			Gallery.init();
+    	});
+
+		function autoHideNotify(style,msg,position) {
+		 	if(style == "error"){
+				icon = "fa fa-exclamation";
+			}else if(style == "warning"){
+				icon = "fa fa-warning";
+			}else if(style == "success"){
+				icon = "fa fa-check";
+			}else if(style == "info"){
+				icon = "fa fa-question";
+			}else{
+				icon = "fa fa-circle-o";
+			}   
+		    $.notify({
+		        title: 'Esta mensagem irá se ocultar...',
+		        text: msg,
+		        image: "<i class='fa fa-warning'></i>"
+		    }, {
+		        style: 'metro',
+		        className: style,
+		        globalPosition:position,
+		        showAnimation: "show",
+		        showDuration: 0,
+		        hideDuration: 0,
+		        autoHideDelay: 4000,
+		        autoHide: true,
+		        clickToHide: true
+		    });
+		}	
+		
+        function mudarPagina(pag){
+			$(location).attr('href','/admin/agendamento-lista/'+pag);
+        }
+		
+        
+	</script>
+</body>
+</html>

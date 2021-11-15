@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="pt-br">
+<!--<![endif]-->
+
+<head>
+	<meta charset="utf-8" />
+	<title>{$pagina['titulo']}</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<meta content="{$pagina['descricao']}" name="description" />
+	<meta content="{$pagina['autor']}" name="author" />
+	<meta content="{$pagina['palavras']}" name="keywords" />
+	
+	<link rel="shortcut icon" href="/res/admin/assets/img/fav.png" type="image/x-icon">	
+	
+	<!-- ================== BEGIN BASE CSS STYLE ================== -->
+	<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+	<link href="/res/admin/assets/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css" rel="stylesheet" />
+	<link href="/res/admin/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="/res/admin/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+	<link href="/res/admin/assets/css/animate.min.css" rel="stylesheet" />
+	<link href="/res/admin/assets/css/style.css" rel="stylesheet" />
+	<link href="/res/admin/assets/css/style-responsive.min.css" rel="stylesheet" />
+	<link href="/res/admin/assets/css/theme/default.css" rel="stylesheet" id="theme" />
+	<!-- ================== END BASE CSS STYLE ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL CSS STYLE ================== -->
+	<link href="/res/admin/assets/plugins/jquery-notifyjs/styles/metro/notify-metro.css" rel="stylesheet" type="text/css" />	
+	<!-- ================== END PAGE LEVEL CSS STYLE ================== -->
+
+	<!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
+  	<link href="/res/admin/assets/plugins/isotope/isotope.css" rel="stylesheet" />
+  	<link href="/res/admin/assets/plugins/lightbox/css/lightbox.css" rel="stylesheet" />
+	<!-- ================== END PAGE LEVEL STYLE ================== -->
+	
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="/res/admin/assets/plugins/pace/pace.min.js"></script>
+	<!-- ================== END BASE JS ================== -->
+	
+</head>
+<body>
+	<!-- begin #page-loader -->
+	<div id="page-loader" class="fade in"><span class="spinner"></span></div>
+	<!-- end #page-loader -->
+	
+	<!-- begin #page-container -->
+	<div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+	
+		<!-- begin #header -->
+		{include="header_include"}
+		<!-- end #header -->
+		
+		<!-- begin #sidebar -->
+		{include="menu"}
+		<!-- end #sidebar -->
+		
+		<!-- begin #content -->
+		<div id="content" class="content content-full-width">
+		    <!-- begin vertical-box -->
+		    <div class="vertical-box">
+		        <!-- begin vertical-box-column -->
+		        <div class="vertical-box-column width-250">
+		            <!-- begin wrapper -->
+                    <div class="wrapper bg-silver text-center">
+                        <a href="email_compose.html" class="btn btn-success p-l-40 p-r-40 btn-sm">
+                            Novo Incidente
+                        </a>
+                    </div>
+		            <!-- end wrapper -->
+		            <!-- begin wrapper -->
+                    <div class="wrapper">
+                        <p><b>UNIDADES</b></p>
+                        <ul class="nav nav-pills nav-stacked nav-sm m-b-0">
+                            <li><a href="javascript:;"><i class="fa fa-fw m-r-5 fa-circle text-inverse"></i> Administração</a></li>
+                            <li><a href="javascript:;"><i class="fa fa-fw m-r-5 fa-circle text-primary"></i> Saúde</a></li>
+                            <li><a href="javascript:;"><i class="fa fa-fw m-r-5 fa-circle text-success"></i> Educação</a></li>
+                            <li><a href="javascript:;"><i class="fa fa-fw m-r-5 fa-circle text-warning"></i> Obras</a></li>
+                            <li><a href="javascript:;"><i class="fa fa-fw m-r-5 fa-circle text-danger"></i> Cultura</a></li>
+                        </ul>
+                    </div>
+		            <!-- end wrapper -->
+		        </div>
+		        <!-- end vertical-box-column -->
+		        <!-- begin vertical-box-column -->
+		        <div class="vertical-box-column">
+		            <!-- begin wrapper -->
+                    <div class="wrapper bg-silver-lighter">
+                        <!-- begin btn-toolbar -->
+                        <div class="btn-toolbar">
+                            <!-- begin btn-group -->
+                            <div class="btn-group pull-right">
+                                <button class="btn btn-white btn-sm">
+                                    <i class="fa fa-chevron-left"></i>
+                                </button>
+                                <button class="btn btn-white btn-sm">
+                                    <i class="fa fa-chevron-right"></i>
+                                </button>
+                            </div>
+                            <!-- end btn-group -->
+                            <!-- begin btn-group -->
+                            <div class="btn-group dropdown">
+                                <button class="btn btn-white btn-sm dropdown-toggle" data-toggle="dropdown">
+                                    Ver Todas <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu text-left text-sm">
+                                    <li class="active"><a href="#"><i class="fa fa-circle f-s-10 fa-fw m-r-5"></i> Todas</a></li>
+                                    <li><a href="javascript:;"><i class="fa f-s-10 fa-fw m-r-5"></i> Administração</a></li>
+                                    <li><a href="javascript:;"><i class="fa f-s-10 fa-fw m-r-5"></i> Saúde</a></li>
+                                    <li><a href="javascript:;"><i class="fa f-s-10 fa-fw m-r-5"></i> Educação</a></li>
+                                    <li><a href="javascript:;"><i class="fa f-s-10 fa-fw m-r-5"></i> Obras</a></li>
+                                    <li><a href="javascript:;"><i class="fa f-s-10 fa-fw m-r-5"></i> Cultura</a></li>
+                                </ul>
+                            </div>
+                            <!-- end btn-group -->
+                            <!-- begin btn-group 
+                            <div class="btn-group">
+                                <button class="btn btn-sm btn-white" data-toggle="tooltip" data-placement="top" data-title="Refresh" data-original-title="" title=""><i class="fa fa-refresh"></i></button>
+                            </div>
+                             end btn-group -->
+                            <!-- begin btn-group -->
+                            <div class="btn-group">
+                                <button class="btn btn-sm btn-white hide" data-email-action="delete"><i class="fa fa-book m-r-3"></i> <span class="hidden-xs">Detalhes</span></button>
+                                <button class="btn btn-sm btn-white hide" data-email-action="archive"><i class="fa fa-edit m-r-3"></i> <span class="hidden-xs">Alterar</span></button>
+                                <button class="btn btn-sm btn-white hide" data-email-action="archive"><i class="fa fa-trash m-r-3"></i> <span class="hidden-xs">Excluir</span></button>
+                            </div>
+                            <!-- end btn-group -->
+                        </div>
+                        <!-- end btn-toolbar -->
+                    </div>
+		            <!-- end wrapper -->
+		            <!-- begin list-email -->
+                    <ul class="list-group list-group-lg no-radius list-email">
+                        <li class="list-group-item inverse">
+                            <div class="email-checkbox">
+                                <label>
+                                    <i class="fa fa-square-o"></i>
+                                    <input type="checkbox" data-checked="email-checkbox" />
+                                </label>
+                            </div>
+                            <a href="#" class="email-user">
+                                <img src="/res/admin/assets/img/user-14.jpg" alt="" />
+                            </a>
+                            <div class="email-info">
+                                <span class="email-time">Hoje</span>
+                                <h5 class="email-title">
+                                    <a href="#">Bootstrap v4.0 is coming soon</a>
+                                    <span class="label label-inverse f-s-10">Administração</span>
+                                </h5>
+                                <p class="email-desc">
+                                    Praesent id pulvinar orci. Donec ac metus non ligula faucibus venenatis. Suspendisse tortor est, placerat eu dui sed...
+                                </p>
+                            </div>
+                        </li>
+                        <li class="list-group-item primary">
+                            <div class="email-checkbox">
+                                <label>
+                                    <i class="fa fa-square-o"></i>
+                                    <input type="checkbox" data-checked="email-checkbox" />
+                                </label>
+                            </div>
+                            <a href="#" class="email-user">
+                                <img src="/res/admin/assets/img/user-13.jpg" alt="" />
+                            </a>
+                            <div class="email-info">
+                                <span class="email-time">
+                                    há 2 dias
+                                </span>
+                                <h5 class="email-title">
+                                    <a href="#">Color Admin dashboard v2 is ready for live</a>
+                                    <span class="label label-primary f-s-10">Saúde</span>
+                                </h5>
+                                <p class="email-desc">Proin interdum aliquam urna, quis lobortis magna tincidunt ac. Integer sed pulvinar neque...
+                                </p>
+                            </div>
+                        </li>
+                        <li class="list-group-item primary">
+                            <div class="email-checkbox">
+                                <label>
+                                    <i class="fa fa-square-o"></i>
+                                    <input type="checkbox" data-checked="email-checkbox" />
+                                </label>
+                            </div>
+                            <a href="#" class="email-user">
+                                <img src="/res/admin/assets/img/user-11.jpg" alt="" />
+                            </a>
+                            <div class="email-info">
+                                <span class="email-time">
+                                    há 1 semana
+                                </span>
+                                <h5 class="email-title">
+                                    <a href="#">Sidebar animation bugfix</a>
+                                    <span class="label label-primary f-s-10">Saúde</span>
+                                </h5>
+                                <p class="email-desc">
+                                    Nam sit amet lacinia massa, sit amet blandit urna. Duis pharetra ex id ipsum posuere...
+                                </p>
+                            </div>
+                        </li>
+                        <li class="list-group-item success">
+                            <div class="email-checkbox">
+                                <label>
+                                    <i class="fa fa-square-o"></i>
+                                    <input type="checkbox" data-checked="email-checkbox" />
+                                </label>
+                            </div>
+                            <a href="#" class="email-user">
+                                <img src="/res/admin/assets/img/user-10.jpg" alt="" />
+                            </a>
+                            <div class="email-info">
+                                <span class="email-time">
+                                    há 1 semana
+                                </span>
+                                <h5 class="email-title">
+                                    <a href="#">Bootstrap Framework is awesome</a>
+                                    <span class="label label-success f-s-10">Educação</span>
+                                </h5>
+                                <p class="email-desc">
+                                    Etiam enim ipsum, malesuada in consectetur interdum, malesuada et lacus. Aenean faucibus turpis lorem...
+                                </p>
+                            </div>
+                        </li>
+                        <li class="list-group-item inverse">
+                            <div class="email-checkbox">
+                                <label>
+                                    <i class="fa fa-square-o"></i>
+                                    <input type="checkbox" data-checked="email-checkbox" />
+                                </label>
+                            </div>
+                            <a href="#" class="email-user">
+                                <img src="/res/admin/assets/img/user-9.jpg" alt="" />
+                            </a>
+                            <div class="email-info">
+                                <span class="email-time">
+                                    há 2 meses
+                                </span>
+                                <h5 class="email-title">
+                                    <a href="#">Handlebars help you to build semantic template </a>
+                                    <span class="label label-inverse f-s-10">Administração</span>
+                                </h5>
+                                <p class="email-desc">
+                                    Proin consectetur accumsan rhoncus. Nulla porta orci ultricies lectus consequat fringilla. Vestibulum ante ipsum primis in faucibus...
+                                </p>
+                            </div>
+                        </li>
+                        <li class="list-group-item inverse">
+                            <div class="email-checkbox">
+                                <label>
+                                    <i class="fa fa-square-o"></i>
+                                    <input type="checkbox" data-checked="email-checkbox" />
+                                </label>
+                            </div>
+                            <a href="#" class="email-user">
+                                <img src="/res/admin/assets/img/user-10.jpg" alt="" />
+                            </a>
+                            <div class="email-info">
+                                <span class="email-time">
+                                    há 2 meses
+                                </span>
+                                <h5 class="email-title">
+                                    <a href="#">jQuery 2++ no longer compatibility with the old browser</a>
+                                    <span class="label label-inverse f-s-10">Administração</span>
+                                </h5>
+                                <p class="email-desc">
+                                    Suspendisse ut urna orci. Vivamus ac diam sollicitudin, consequat mauris id, facilisis ipsum. Nam feugiat nisl a justo...
+                                </p>
+                            </div>
+                        </li>
+                        <li class="list-group-item warning">
+                            <div class="email-checkbox">
+                                <label>
+                                    <i class="fa fa-square-o"></i>
+                                    <input type="checkbox" data-checked="email-checkbox" />
+                                </label>
+                            </div>
+                            <a href="#" class="email-user">
+                                <img src="/res/admin/assets/img/user-8.jpg" alt="" />
+                            </a>
+                            <div class="email-info">
+                                <span class="email-time">
+                                    há 2 meses
+                                </span>
+                                <h5 class="email-title">
+                                    <a href="#">LESS & SASS, which one is good?</a>
+                                    <span class="label label-warning f-s-10">Obras</span>
+                                </h5>
+                                <p class="email-desc">
+                                    Nam vulputate cursus imperdiet. Sed sodales urna vitae ipsum iaculis, at fermentum...
+                                </p>
+                            </div>
+                        </li>
+                        <li class="list-group-item danger">
+                            <div class="email-checkbox">
+                                <label>
+                                    <i class="fa fa-square-o"></i>
+                                    <input type="checkbox" data-checked="email-checkbox" />
+                                </label>
+                            </div>
+                            <a href="#" class="email-user">
+                                <img src="/res/admin/assets/img/user-7.jpg" alt="" />
+                            </a>
+                            <div class="email-info">
+                                <span class="email-time">
+                                    há 3 meses
+                                </span>
+                                <h5 class="email-title">
+                                    <a href="#">Simple Line Icons is available on Color Admin v1.4</a>
+                                    <span class="label label-danger f-s-10">Cultura</span>
+                                </h5>
+                                <p class="email-desc">
+                                    Maecenas auctor dui sit amet tristique congue. Pellentesque lobortis nulla quam. Etiam in vulputate magna...
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+		            <!-- end list-email -->
+		            <!-- begin wrapper -->
+                    <div class="wrapper bg-silver-lighter clearfix">
+                        <div class="btn-group pull-right">
+                            <button class="btn btn-white btn-sm">
+                                <i class="fa fa-chevron-left"></i>
+                            </button>
+                            <button class="btn btn-white btn-sm">
+                                <i class="fa fa-chevron-right"></i>
+                            </button>
+                        </div>
+                        <div class="m-t-5">232 viagens</div>
+                    </div>
+		            <!-- end wrapper -->
+		        </div>
+		        <!-- end vertical-box-column -->
+		    </div>
+		    <!-- end vertical-box -->
+		</div>
+		<!-- end #content -->
+				
+		<!-- begin scroll to top btn -->
+		<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+		<!-- end scroll to top btn -->
+	</div>
+	<!-- end page container -->
+	
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="/res/admin/assets/plugins/jquery/jquery-1.9.1.min.js"></script>
+	<script src="/res/admin/assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
+	<script src="/res/admin/assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
+	<script src="/res/admin/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<!--[if lt IE 9]>
+		<script src="/res/admin/assets/crossbrowserjs/html5shiv.js"></script>
+		<script src="/res/admin/assets/crossbrowserjs/respond.min.js"></script>
+		<script src="/res/admin/assets/crossbrowserjs/excanvas.min.js"></script>
+	<![endif]-->
+	<script src="/res/admin/assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="/res/admin/assets/plugins/jquery-cookie/jquery.cookie.js"></script>
+	<!-- ================== END BASE JS ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+	<script src="/res/admin/assets/js/email-inbox-v2.demo.min.js"></script>
+	<script src="/res/admin/assets/js/apps.min.js"></script>
+	<!-- ================== END PAGE LEVEL JS ================== -->
+	<script>
+		$(document).ready(function() {
+			App.init();
+			InboxV2.init();
+		});
+	</script>
+</body>
+</html>

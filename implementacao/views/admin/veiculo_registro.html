@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+	<meta charset="utf-8" />
+	<title>{$pagina['titulo']}</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<meta content="{$pagina['descricao']}" name="description" />
+	<meta content="{$pagina['autor']}" name="author" />
+	<meta content="{$pagina['palavras']}" name="keywords" />
+	
+	<link rel="shortcut icon" href="/res/admin/assets/img/fav.png" type="image/x-icon">	
+	
+	<!-- ================== BEGIN BASE CSS STYLE ================== -->
+	<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+	<link href="/res/admin/assets/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css" rel="stylesheet" />
+	<link href="/res/admin/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="/res/admin/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+	<link href="/res/admin/assets/css/animate.min.css" rel="stylesheet" />
+	<link href="/res/admin/assets/css/style.css" rel="stylesheet" />
+	<link href="/res/admin/assets/css/style-responsive.min.css" rel="stylesheet" />
+	<link href="/res/admin/assets/css/theme/default.css" rel="stylesheet" id="theme" />
+	<!-- ================== END BASE CSS STYLE ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL CSS STYLE ================== -->
+	<link href="/res/admin/assets/plugins/jquery-tag-it/css/jquery.tagit.css" rel="stylesheet" />
+	<link href="/res/admin/assets/plugins/bootstrap-wysihtml5/src/bootstrap-wysihtml5.css" rel="stylesheet" />
+	<link href="/res/admin/assets/plugins/jquery-notifyjs/styles/metro/notify-metro.css" rel="stylesheet" type="text/css" />
+	<link href="/res/admin/assets/plugins/bootstrap-datepicker/css/datepicker.css" rel="stylesheet" />	
+	<link href="/res/admin/assets/plugins/switchery/switchery.min.css" rel="stylesheet" />
+	<link href="/res/admin/assets/plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
+	
+	<!-- ================== END PAGE LEVEL CSS STYLE ================== -->
+
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="/res/admin/assets/plugins/pace/pace.min.js"></script>
+	<!-- ================== END BASE JS ================== -->
+	
+	
+</head>
+<body>
+	<!-- begin #page-loader -->
+	<div id="page-loader" class="fade in"><span class="spinner"></span></div>
+	<!-- end #page-loader -->
+	
+	<!-- begin #page-container -->
+	<div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+	
+		<!-- begin #header -->
+		{include="header_include"}
+		<!-- end #header -->
+		
+		<!-- begin #sidebar -->
+		{include="menu"}
+		<!-- end #sidebar -->
+		
+		<!-- begin #content -->
+		<div id="content" class="content content-full-width">
+			
+		    <!-- begin vertical-box -->
+		    <div class="vertical-box">
+		        
+		        <!-- begin vertical-box-column -->
+		        <div class="vertical-box-column width-250">
+		        
+		            <!-- begin wrapper -->
+                    <div class="wrapper bg-silver text-center">
+                    	&nbsp;
+                    </div>
+		            <!-- end wrapper -->
+		            
+		            <!-- begin wrapper -->
+                    <div class="wrapper">                        
+                        <ul class="nav nav-pills nav-stacked nav-sm">
+                            <li>
+								<div class="note note-info">
+									<h4>Veiculo</h4>
+									<p>Cadastrar ou alterar registro.</p>
+								</div>                            
+                            </li>
+                        </ul>
+						<div class="col-sm-12" style="margin: 5px;">
+							<label id="lb01">
+							{if="$registro['imagem01']"}01{/if}
+							</label>
+							<div id="image-01-holder" style="width: 100%;">
+							{if="$registro['imagem01']"}<img src="/views/images/veiculos/{$registro['imagem01']}" style="max-width: 100%">{/if}
+							</div>
+						</div>
+						<div class="col-sm-12" style="margin: 5px;">
+							<label id="lb02">
+							{if="$registro['imagem02']"}02{/if}							
+							</label>
+							<div id="image-02-holder" style="width: 100%;">
+							{if="$registro['imagem02']"}<img src="/views/images/veiculos/{$registro['imagem02']}" style="max-width: 100%">{/if}
+							</div>
+						</div>
+						<div class="col-sm-12" style="margin: 5px;">
+							<label id="lb03">
+							{if="$registro['imagem03']"}03{/if}							
+							</label>
+							<div id="image-03-holder" style="width: 100%;">
+							{if="$registro['imagem03']"}<img src="/views/images/veiculos/{$registro['imagem03']}" style="max-width: 100%">{/if}
+							</div>
+						</div>						
+						<div class="col-sm-12" style="margin: 5px;">
+							<label id="lb04">
+							{if="$registro['imagem04']"}04{/if}							
+							</label>
+							<div id="image-04-holder" style="width: 100%;">
+							{if="$registro['imagem04']"}<img src="/views/images/veiculos/{$registro['imagem04']}" style="max-width: 100%">{/if}
+							</div>
+						</div>						
+						<div class="col-sm-12" style="margin: 5px;">
+							<label id="lb05">
+							{if="$registro['imagem05']"}05{/if}							
+							</label>
+							<div id="image-05-holder" style="width: 100%;">
+							{if="$registro['imagem05']"}<img src="/views/images/veiculos/{$registro['imagem05']}" style="max-width: 100%">{/if}
+							</div>
+						</div>						
+						<div class="col-sm-12" style="margin: 5px;">
+							<label id="lb06">
+							{if="$registro['imagem06']"}06{/if}							
+							</label>
+							<div id="image-06-holder" style="width: 100%;">
+							{if="$registro['imagem06']"}<img src="/views/images/veiculos/{$registro['imagem06']}" style="max-width: 100%">{/if}
+							</div>
+						</div>						
+					</div>
+		            
+		            
+		        </div>
+		        <!-- end vertical-box-column -->		        
+		        
+		        <!-- begin vertical-box-column -->
+		        <div class="vertical-box-column">
+		        
+		            <!-- begin wrapper -->
+                    <div class="wrapper bg-silver-lighter">
+                    	&nbsp;
+                    </div>
+		            <!-- end wrapper -->
+		            
+		            <!-- begin wrapper -->
+                    <div class="wrapper">
+                        <div class="p-30 bg-white">
+                        
+                        	<div id="horizontal-form">
+	                            <form class="form-horizontal" action="/admin/cadastro-veiculo" method="POST" name="formConfirma" id="formConfirma" enctype="multipart/form-data">
+	                                <div class="form-group">
+		                                <div class="col-sm-4">
+											<input type="checkbox" data-render="switchery" data-theme="default" class="js-switch" name="ckSeguro" id="ckSeguro" {if="$registro['seguro']=='true'"}checked="checked"{/if} value="true" onchange="mudarSeguro(this);" />	
+											<span class="text-muted m-l-5 m-r-20"><span id='lbSeguro'>Possui Seguro</span></span>	                                
+		                                </div>
+		                                <div class="col-sm-4">
+											<input type="checkbox" data-render="switchery" data-theme="default" class="js-switch" name="ckGNV" id="ckGNV" {if="$registro['gnv']=='true'"}checked="checked"{/if} value="true" onchange="mudarGNV(this);" />	
+											<span class="text-muted m-l-5 m-r-20"><span id='lbGNV'>Possui GNV</span></span>	                                
+		                                </div>
+	                                </div>
+									<div class="form-group" style="margin-bottom: 5px;">
+										<div class="col-sm-12">
+											<label>Proprietário</label>
+										    <select class="form-control selectpicker" data-size="10" data-live-search="true" data-style="btn-white" id="idProprietario" name="idProprietario">
+										    	{if="$registro['idProprietario']"}<option value="{$registro['idProprietario']}">{$registro['proprietario']} {if="$registro['cpf']"}CPF: {$registro['cpf']} {/if} {if="$registro['cnpj']"}CNPJ: {$registro['cnpj']} {/if}</option>{/if}										    
+	                                            <option value="">Selecione</option>
+									  			{loop="$listaProprietario" as $item}
+								  					<option value="{$item['idProprietario']}">{$item['proprietario']}  {if="$item['cpf']"}CPF: {$item['cpf']} {/if} {if="$item['cnpj']"}CNPJ: {$item['cnpj']} {/if} </option>
+									  			{/loop}
+	                                        </select>
+										</div>
+								  	</div>	                                
+									<div class="form-group" style="margin-bottom: 5px;">
+										<div class="col-sm-12">
+											<label>Descrição</label>
+	                            			<input id="veiculo" class="form-control" type="text" name="veiculo" title="Informe uma descrição" placeholder="Veiculo" onblur="maiuscula(this);" {if="$registro['veiculo']"}value="{$registro['veiculo']}"{/if} />
+										</div>
+								  	</div>	                                
+									<div class="form-group" style="margin-bottom: 5px;">
+										<div class="col-sm-4">
+											<label>Placa</label>
+											<input id="placa" class="form-control" type="text" name="placa" placeholder="Placa" onblur="maiuscula(this);" {if="$registro['placa']"}value="{$registro['placa']}"{/if} />
+										</div>
+										<div class="col-sm-4">
+											<label>Renavan</label>
+								  			<input id="renavan" class="form-control" type="text" name="renavan" placeholder="RENAVAN" onblur="maiuscula(this);" {if="$registro['renavan']"}value="{$registro['renavan']}"{/if} />								  			
+										</div>
+										<div class="col-sm-4">
+											<label>Chassi</label>
+								  			<input id="chassi" class="form-control" type="text" name="chassi" placeholder="Chassi" onblur="maiuscula(this);"  {if="$registro['chassi']"}value="{$registro['chassi']}"{/if} />
+										</div>
+								  	</div>
+									<div class="form-group" style="margin-bottom: 5px;">
+										<div class="col-sm-4">
+											<label>Ano Fabricação</label>
+											<input id="anoFabricacao" class="form-control" type="text" name="anoFabricacao" placeholder="Ano Fabricação" {if="$registro['anoFabricacao']"}value="{$registro['anoFabricacao']}"{/if} />
+										</div>
+										<div class="col-sm-4">
+											<label>Ano Modelo</label>
+								  			<input id="anoModelo" class="form-control" type="text" name="anoModelo" placeholder="Ano Modelo" {if="$registro['anoModelo']"}value="{$registro['anoModelo']}"{/if} />								  			
+										</div>
+										<div class="col-sm-4">
+											<label>Valor FIPE</label>
+								  			<input id="valorFipe" class="form-control" type="text" name="valorFipe" placeholder="Valor FIPE" {if="$registro['valorFipe']"}value="{$registro['valorFipeExib']}"{/if} />
+										</div>
+								  	</div>	                                
+									<div class="form-group" style="margin-bottom: 5px;">
+										<div class="col-sm-4">
+											<label>Combustível</label>
+									  		<select class="form-control" name="combustivel" id="combustivel">
+									  			{if="$registro['combustivel']"}<option value="{$registro['combustivel']}">{$registro['combustivel']}</option>{/if}
+									  			<option value="">Selecione</option>
+												<option value="DIESEL">Diesel</option> 
+												<option value="FLEX">Flex</option> 
+												<option value="GASOLINA">Gasolina</option> 
+												<option value="ETANOL">Etanol</option> 
+											</select>											
+										</div>
+										<div class="col-sm-4">
+											<label>Cor</label>
+								  			<input id="cor" class="form-control" type="text" name="cor" placeholder="Cor" onblur="maiuscula(this);" {if="$registro['cor']"}value="{$registro['cor']}"{/if} />								  			
+										</div>
+										<div class="col-sm-4">
+											<label>KM (cadastro)</label>
+								  			<input id="kmInicial" class="form-control" type="text" name="kmInicial" placeholder="KM (cadastro)" {if="$registro['kmInicial']"}value="{$registro['kmInicialExib']}"{/if} />
+										</div>
+								  	</div>	                                
+									<div class="form-group" style="margin-bottom: 5px;">
+										<div class="col-sm-4">
+											<label>QTD Passageiros</label>
+											<input id="qtdPassageiros" class="form-control" type="text" name="qtdPassageiros" placeholder="QTD Passageiros" onkeydown="soNumeroRestrito(this);" {if="$registro['qtdPassageiros']"}value="{$registro['qtdPassageiros']}"{/if} />
+										</div>
+										<div class="col-sm-4">
+											<label>N° Patrimônio</label>
+								  			<input id="patrimonio" class="form-control" type="text" name="patrimonio" placeholder="N° Patrimônio" {if="$registro['patrimonio']"}value="{$registro['patrimonio']}"{/if} />								  			
+										</div>
+										<div class="col-sm-4">
+											&nbsp;
+										</div>
+								  	</div>
+									<div class="form-group" style="margin-bottom: 5px;">
+										<div class="col-sm-12">
+											<label>Observações</label>
+											<textarea rows="3" class="form-control" id="observacoes" name="observacoes" placeholder="Observações">{if="$registro['observacoes']"}{$registro['observacoes']}{/if}</textarea>
+										</div>
+								  	</div>								  									  		                                
+									<div class="form-group" style="margin-bottom: 5px;">
+										<div class="col-sm-6">
+											<label>Imagem 01 </label>
+								  			<input type="file" class="form-control" placeholder="Imagem 01" id="upload01" name="upload01" />
+										</div>
+										<div class="col-sm-6">
+											<label>Imagem 02 </label>
+								  			<input type="file" class="form-control" placeholder="Imagem 02" id="upload02" name="upload02" />
+										</div>
+								  	</div>								  	
+									<div class="form-group" style="margin-bottom: 5px;">
+										<div class="col-sm-6">
+											<label>Imagem 03 </label>
+								  			<input type="file" class="form-control" placeholder="Imagem 03" id="upload03" name="upload03" />
+										</div>
+										<div class="col-sm-6">
+											<label>Imagem 04 </label>
+								  			<input type="file" class="form-control" placeholder="Imagem 04" id="upload04" name="upload04" />
+										</div>
+								  	</div>								  	
+									<div class="form-group" style="margin-bottom: 5px;">
+										<div class="col-sm-6">
+											<label>Imagem 05 </label>
+								  			<input type="file" class="form-control" placeholder="Imagem 05" id="upload05" name="upload05" />
+										</div>
+										<div class="col-sm-6">
+											<label>Imagem 06 </label>
+								  			<input type="file" class="form-control" placeholder="Imagem 06" id="upload06" name="upload06" />
+										</div>
+								  	</div>								  	
+								  	
+									<div class="form-group" style="margin-bottom: 5px;">
+										<div class="col-sm-12">&nbsp;</div>
+								  	</div>	
+								  	
+									<div class="form-group" style="margin-bottom: 5px;">
+										<div class="col-sm-12">
+											<button type="submit" class="btn btn-success" id="btSalvar">Salvar</button>
+											<a href="/admin/cadastro-veiculo" title="Cancelar" class="btn btn-default">Voltar</a>
+										</div>
+								  	</div>
+	                               
+									<input type="hidden" name="gnv" id="gnv" value="{if="$registro['gnv']"}{$registro['gnv']}{else}false{/if}" />	
+									<input type="hidden" name="seguro" id="seguro" value="{if="$registro['seguro']"}{$registro['seguro']}{else}false{/if}" />	                               
+									<input type="hidden" name="idRegistro" id="idRegistro" value="{if="$registro['idVeiculo']"}{$registro['idVeiculo']}{/if}" />
+									<input type="hidden" name="acao" id="acao" value="{$acao}" />	                               
+	                            </form>								  	
+								  	
+							</div>
+                        </div>
+                    </div>
+		            <!-- end wrapper -->
+		        </div>
+		        <!-- end vertical-box-column -->
+		    </div>
+		    <!-- end vertical-box -->
+		</div>
+		<!-- end #content -->
+		
+	</div>
+	<!-- end page container -->
+	
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="/res/admin/assets/plugins/jquery/jquery-1.9.1.min.js"></script>
+	<script src="/res/admin/assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
+	<script src="/res/admin/assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
+	<script src="/res/admin/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<!--[if lt IE 9]>
+		<script src="/res/admin/assets/crossbrowserjs/html5shiv.js"></script>
+		<script src="/res/admin/assets/crossbrowserjs/respond.min.js"></script>
+		<script src="/res/admin/assets/crossbrowserjs/excanvas.min.js"></script>
+	<![endif]-->
+	<script src="/res/admin/assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="/res/admin/assets/plugins/jquery-cookie/jquery.cookie.js"></script>
+	<!-- ================== END BASE JS ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+	<script src="/res/admin/assets/plugins/jquery-tag-it/js/tag-it.min.js"></script>
+	<script src="/res/admin/assets/js/apps.min.js"></script>
+	<!-- ================== END PAGE LEVEL JS ================== -->
+	
+	<!-- Specific Page Scripts Put Here -->
+	<script src="/res/admin/assets/plugins/jquery-notifyjs/notify.min.js"></script>
+	<script src="/res/admin/assets/plugins/jquery-notifyjs/styles/metro/notify-metro.js"></script>
+	<script src="/res/admin/assets/js/valida.js"></script>
+	<script src="/res/admin/assets/js/jquery.validate.min.js"></script>
+	<script src="/res/admin/assets/js/jquery.mask.min.js" type="text/javascript"></script>
+	
+	<script src="/res/admin/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+	<script src="/res/admin/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.pt-BR.js"></script>
+	<script src="/res/admin/assets/plugins/switchery/switchery.min.js"></script>
+	<script src="/res/admin/assets/plugins/bootstrap-select/bootstrap-select.min.js"></script>
+
+    <script src="/res/admin/assets/js/ckeditor/ckeditor.js"></script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key={$googleAPIkey}"></script>
+	    
+	<script>
+		$(document).ready(function() {
+			App.init();
+			
+			$(".selectpicker").selectpicker("render");
+			
+			$('#anoFabricacao').mask("9999");
+			$('#anoModelo').mask("9999");
+			$('#kmInicial').mask("#.##0,00", {reverse: true});
+			$('#valorFipe').mask("#.##0,00", {reverse: true});
+
+	        $('#formConfirma').validate({
+	            rules:{
+	                veiculo:{
+	                    required: true,
+	                    minlength: 10,
+	                    maxlength: 100
+	                },
+	                placa:{
+	                    required: true
+	                }	                
+	                
+	            },
+	            messages:{
+	            	veiculo:{
+	                    required: "Este campo \u00e9 obrigat\u00f3rio.",
+	                    minlength: "Este campo deve ter no m\u00ednimo 10 caracteres.",
+	                    maxlength: "Este campo deve ter no m\u00e1ximo 100 caracteres."
+	                },
+	                placa:{
+	                    required: "Este campo \u00e9 obrigat\u00f3rio."
+	                } 	                
+	            }
+	        });
+
+	        $("#upload01").on('change', function () {
+	        	$("#lb01").html('');
+	            if (typeof (FileReader) != "undefined") {	            	
+	                var image_holder = $("#image-01-holder");
+	                image_holder.empty();
+	                var reader = new FileReader();
+	                reader.onload = function (e) {
+	                    $("<img />", {
+	                        "src": e.target.result,
+	                        "style": "max-width: 100%"
+	                    }).appendTo(image_holder);
+	                }
+	                image_holder.show();
+	                reader.readAsDataURL($(this)[0].files[0]);
+		        	$("#lb01").html('01');
+	            } else{
+	                alert("Este navegador nao suporta FileReader.");
+	            }
+	        });		        
+
+	        $("#upload02").on('change', function () {
+	        	$("#lb02").html('');
+	            if (typeof (FileReader) != "undefined") {	            	
+	                var image_holder = $("#image-02-holder");
+	                image_holder.empty();
+	                var reader = new FileReader();
+	                reader.onload = function (e) {
+	                    $("<img />", {
+	                        "src": e.target.result,
+	                        "style": "max-width: 100%"
+	                    }).appendTo(image_holder);
+	                }
+	                image_holder.show();
+	                reader.readAsDataURL($(this)[0].files[0]);
+		        	$("#lb02").html('02');
+	            } else{
+	                alert("Este navegador nao suporta FileReader.");
+	            }
+	        });		        
+	        
+	        $("#upload03").on('change', function () {
+	        	$("#lb03").html('');
+	            if (typeof (FileReader) != "undefined") {	            	
+	                var image_holder = $("#image-03-holder");
+	                image_holder.empty();
+	                var reader = new FileReader();
+	                reader.onload = function (e) {
+	                    $("<img />", {
+	                        "src": e.target.result,
+	                        "style": "max-width: 100%"
+	                    }).appendTo(image_holder);
+	                }
+	                image_holder.show();
+	                reader.readAsDataURL($(this)[0].files[0]);
+		        	$("#lb03").html('03');
+	            } else{
+	                alert("Este navegador nao suporta FileReader.");
+	            }
+	        });		        
+
+	        $("#upload04").on('change', function () {
+	        	$("#lb04").html('');
+	            if (typeof (FileReader) != "undefined") {	            	
+	                var image_holder = $("#image-04-holder");
+	                image_holder.empty();
+	                var reader = new FileReader();
+	                reader.onload = function (e) {
+	                    $("<img />", {
+	                        "src": e.target.result,
+	                        "style": "max-width: 100%"
+	                    }).appendTo(image_holder);
+	                }
+	                image_holder.show();
+	                reader.readAsDataURL($(this)[0].files[0]);
+		        	$("#lb04").html('04');
+	            } else{
+	                alert("Este navegador nao suporta FileReader.");
+	            }
+	        });		        
+
+	        $("#upload05").on('change', function () {
+	        	$("#lb05").html('');
+	            if (typeof (FileReader) != "undefined") {	            	
+	                var image_holder = $("#image-05-holder");
+	                image_holder.empty();
+	                var reader = new FileReader();
+	                reader.onload = function (e) {
+	                    $("<img />", {
+	                        "src": e.target.result,
+	                        "style": "max-width: 100%"
+	                    }).appendTo(image_holder);
+	                }
+	                image_holder.show();
+	                reader.readAsDataURL($(this)[0].files[0]);
+		        	$("#lb05").html('05');
+	            } else{
+	                alert("Este navegador nao suporta FileReader.");
+	            }
+	        });		        
+
+	        $("#upload06").on('change', function () {
+	        	$("#lb06").html('');
+	            if (typeof (FileReader) != "undefined") {	            	
+	                var image_holder = $("#image-06-holder");
+	                image_holder.empty();
+	                var reader = new FileReader();
+	                reader.onload = function (e) {
+	                    $("<img />", {
+	                        "src": e.target.result,
+	                        "style": "max-width: 100%"
+	                    }).appendTo(image_holder);
+	                }
+	                image_holder.show();
+	                reader.readAsDataURL($(this)[0].files[0]);
+		        	$("#lb06").html('06');
+	            } else{
+	                alert("Este navegador nao suporta FileReader.");
+	            }
+	        });		        
+	        
+		});
+		
+		function autoHideNotify(style,msg,position) {
+		 	if(style == "error"){
+				icon = "fa fa-exclamation";
+			}else if(style == "warning"){
+				icon = "fa fa-warning";
+			}else if(style == "success"){
+				icon = "fa fa-check";
+			}else if(style == "info"){
+				icon = "fa fa-question";
+			}else{
+				icon = "fa fa-circle-o";
+			}   
+		    $.notify({
+		        title: 'Esta mensagem irá se ocultar...',
+		        text: msg,
+		        image: "<i class='fa fa-warning'></i>"
+		    }, {
+		        style: 'metro',
+		        className: style,
+		        globalPosition:position,
+		        showAnimation: "show",
+		        showDuration: 0,
+		        hideDuration: 0,
+		        autoHideDelay: 4000,
+		        autoHide: true,
+		        clickToHide: true
+		    });
+		}		
+		
+		var green = "#00acac",
+		    red = "#ff5b57",
+		    blue = "#348fe2",
+		    purple = "#727cb6",
+		    orange = "#f59c1a",
+		    black = "#2d353c";
+		
+	     function renderSwitcher() {
+	        0 !== $("[data-render=switchery]").length && $("[data-render=switchery]").each(function() {
+	            var t = green;
+	            if ($(this).attr("data-theme")) switch ($(this).attr("data-theme")) {
+	                case "red":
+	                    t = red;
+	                    break;
+	                case "blue":
+	                    t = blue;
+	                    break;
+	                case "purple":
+	                    t = purple;
+	                    break;
+	                case "orange":
+	                    t = orange;
+	                    break;
+	                case "black":
+	                    t = black
+	            }
+	            var a = {};
+	            a.color = t, a.secondaryColor = $(this).attr("data-secondary-color") ? $(this).attr("data-secondary-color") : "#dfdfdf", a.className = $(this).attr("data-classname") ? $(this).attr("data-classname") : "switchery", a.disabled = $(this).attr("data-disabled") ? !0 : !1, a.disabledOpacity = $(this).attr("data-disabled-opacity") ? parseFloat($(this).attr("data-disabled-opacity")) : .5, a.speed = $(this).attr("data-speed") ? $(this).attr("data-speed") : "0.5s";
+	            new Switchery(this, a)
+	        })
+	    }
+	    renderSwitcher();		    
+		
+		function mudarSeguro(campo){
+			var opc = campo.checked;
+			//console.log(opc);
+
+			$('#seguro').val('');
+			
+			if(opc){
+				$('#lbSeguro').html('Possui seguro');
+				$('#seguro').val('true');
+			}else{
+				$('#lbSeguro').html('Não possui seguro');
+				$('#seguro').val('false');
+			}			
+		}
+
+		function mudarGNV(campo){
+			var opc = campo.checked;
+			//console.log(opc);
+
+			$('#gnv').val('');
+			
+			if(opc){
+				$('#lbGNV').html('Possui GNV');
+				$('#gnv').val('true');
+			}else{
+				$('#lbGNV').html('Não possui GNV');
+				$('#gnv').val('false');
+			}			
+		}
+		
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+	<meta charset="utf-8" />
+	<title>{$pagina['titulo']}</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<meta content="{$pagina['descricao']}" name="description" />
+	<meta content="{$pagina['autor']}" name="author" />
+	<meta content="{$pagina['palavras']}" name="keywords" />
+	
+	<link rel="shortcut icon" href="/res/admin/assets/img/fav.png" type="image/x-icon">	
+	
+	<!-- ================== BEGIN BASE CSS STYLE ================== -->
+	<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+	<link href="/res/admin/assets/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css" rel="stylesheet" />
+	<link href="/res/admin/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="/res/admin/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+	<link href="/res/admin/assets/css/animate.min.css" rel="stylesheet" />
+	<link href="/res/admin/assets/css/style.css" rel="stylesheet" />
+	<link href="/res/admin/assets/css/style-responsive.min.css" rel="stylesheet" />
+	<link href="/res/admin/assets/css/theme/default.css" rel="stylesheet" id="theme" />
+	<!-- ================== END BASE CSS STYLE ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL CSS STYLE ================== -->
+	<link href="/res/admin/assets/plugins/jquery-tag-it/css/jquery.tagit.css" rel="stylesheet" />
+	<link href="/res/admin/assets/plugins/bootstrap-wysihtml5/src/bootstrap-wysihtml5.css" rel="stylesheet" />
+	<link href="/res/admin/assets/plugins/jquery-notifyjs/styles/metro/notify-metro.css" rel="stylesheet" type="text/css" />
+	<link href="/res/admin/assets/plugins/bootstrap-datepicker/css/datepicker.css" rel="stylesheet" />	
+	<link href="/res/admin/assets/plugins/switchery/switchery.min.css" rel="stylesheet" />
+	<!-- ================== END PAGE LEVEL CSS STYLE ================== -->
+
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="/res/admin/assets/plugins/pace/pace.min.js"></script>
+	<!-- ================== END BASE JS ================== -->
+	
+	
+</head>
+<body>
+	<!-- begin #page-loader -->
+	<div id="page-loader" class="fade in"><span class="spinner"></span></div>
+	<!-- end #page-loader -->
+	
+	<!-- begin #page-container -->
+	<div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+	
+		<!-- begin #header -->
+		{include="header_include"}
+		<!-- end #header -->
+		
+		<!-- begin #sidebar -->
+		{include="menu"}
+		<!-- end #sidebar -->
+		
+		<!-- begin #content -->
+		<div id="content" class="content content-full-width">
+		
+		    <!-- begin vertical-box -->
+		    <div class="vertical-box">
+		        
+		        <!-- begin vertical-box-column -->
+		        <div class="vertical-box-column width-250">
+		        
+		            <!-- begin wrapper -->
+                    <div class="wrapper">                        
+                        <ul class="nav nav-pills nav-stacked nav-sm">
+                            <li>
+								<div class="note note-info">
+									<h4>Unidade</h4>
+									<p>Cadastrar ou alterar registro.</p>
+								</div>                            
+                            </li>
+                        </ul>
+						<div class="col-sm-12" style="margin: 5px;">
+							<div id="mapUnidade" style="width: 100%; height: 170px;"></div>
+						</div>								                        
+						<div class="col-sm-12" style="margin: 5px;">
+							<label id="lb01">
+							{if="$registro['imagem01']"}01{/if}
+							</label>
+							<div id="image-01-holder" style="width: 100%;">
+							{if="$registro['imagem01']"}<img src="/views/images/unidades/{$registro['imagem01']}" style="max-width: 100%">{/if}
+							</div>
+						</div>
+						<div class="col-sm-12" style="margin: 5px;">
+							<label id="lb02">
+							{if="$registro['imagem02']"}02{/if}							
+							</label>
+							<div id="image-02-holder" style="width: 100%;">
+							{if="$registro['imagem02']"}<img src="/views/images/unidades/{$registro['imagem02']}" style="max-width: 100%">{/if}
+							</div>
+						</div>
+					</div>
+		            
+		            
+		        </div>
+		        <!-- end vertical-box-column -->		        
+		        
+		        <!-- begin vertical-box-column -->
+		        <div class="vertical-box-column">
+		            
+		            <!-- begin wrapper -->
+                    <div class="wrapper">
+                        <div class="p-30 bg-white">
+                        
+                        	<div id="horizontal-form">
+	                            <form class="form-horizontal" action="/admin/unidade_cadastro" method="POST" name="formConfirma" id="formConfirma" enctype="multipart/form-data">
+									<div class="form-group">
+										<div class="col-md-4">
+											<input type="text" name="codigo" id="codigo" value="{$registro['codigo']}" class="form-control" readonly="readonly" />
+										</div>
+									</div>	                            
+									<div class="form-group">
+										<div class="col-sm-12">
+											<label>Descrição</label>
+	                            			<input id="unidade" class="form-control" type="text" name="unidade" title="Informe uma descrição" placeholder="Unidade" onblur="maiuscula(this);" {if="$registro['unidade']"}value="{$registro['unidade']}"{/if} />
+										</div>
+								  	</div>
+									<div class="form-group" style="margin-bottom: 5px;">
+										<div class="col-sm-12">
+											<label>Responsável</label>
+	                            			<input id="responsavel" class="form-control" type="text" name="responsavel" placeholder="Responsável" onblur="maiuscula(this);" {if="$registro['responsavel']"}value="{$registro['responsavel']}"{/if} />
+										</div>
+								  	</div>
+									<div class="form-group" style="margin-bottom: 5px;">
+										<div class="col-sm-4">
+											<label>Telefone</label>
+											<input id="telefone" class="form-control" type="text" name="telefone" placeholder="Telefone" {if="$registro['telefone']"}value="{$registro['telefone']}"{/if} />
+										</div>
+										<div class="col-sm-4">
+											<label>Email</label>
+								  			<input id="email" class="form-control" type="text" name="email" placeholder="Email" onblur="minuscula(this);" {if="$registro['email']"}value="{$registro['email']}"{/if} />								  			
+										</div>
+										<div class="col-sm-4">
+											<label>CEP</label>
+								  			<input class="form-control" placeholder="CEP" name="cep" id="cep" onblur="preencheEnderecoCEP(this);" {if="$registro['cep']"}value="{$registro['cep']}"{/if} />
+										</div>
+								  	</div>
+			                    	<div class="form-group" style="margin-bottom: 5px;">
+			                            <div class="col-sm-10">
+			                            	<label>Endereço</label>
+			                                <input class="form-control" placeholder="Endereço" name="endereco" id="endereco" onblur="maiuscula(this);" {if="$registro['endereco']"}value="{$registro['endereco']}"{/if} />
+			                            </div>
+			                            <div class="col-sm-2">
+			                            	<label>N.</label>
+			                                <input class="form-control" placeholder="N." name="numero" id="numero" onkeyup="maiuscula(this);mudarMapa();" {if="$registro['numero']"}value="{$registro['numero']}"{/if} />
+			                            </div>
+									</div>
+			                    	<div class="form-group" style="margin-bottom: 5px;">
+			                            <div class="col-sm-6">
+			                            	<label>Complemento</label>
+			                                <input class="form-control" placeholder="Complemento" name="complemento" id="complemento" onblur="maiuscula(this);" {if="$registro['complemento']"}value="{$registro['complemento']}"{/if} />
+			                            </div>
+			                            <div class="col-sm-6">
+			                            	<label>Cidade</label>
+			                                <input class="form-control" placeholder="Cidade" name="cidade" id="cidade" onblur="maiuscula(this);mudarMapa();" {if="$registro['cidade']"}value="{$registro['cidade']}"{/if} />
+			                            </div>
+									</div>
+			                    	<div class="form-group" style="margin-bottom: 5px;">
+			                            <div class="col-sm-6">
+			                            	<label>Bairro</label>
+			                                <input class="form-control" placeholder="Bairro" name="bairro" id="bairro" onblur="maiuscula(this);mudarMapa();" {if="$registro['bairro']"}value="{$registro['bairro']}"{/if} />
+			                            </div>
+			                            <div class="col-sm-6">
+			                            	<label>Estado</label>
+									  		<select class="form-control" name="estado" id="estado">
+									  			{if="$registro['estado']"}<option value="{$registro['estado']}">{$registro['estado']}</option>{/if}
+									  			<option value="">Selecione</option>
+												<option value="AC">Acre</option> 
+												<option value="AL">Alagoas</option> 
+												<option value="AM">Amazonas</option> 
+												<option value="AP">Amapá</option> 
+												<option value="BA">Bahia</option> 
+												<option value="CE">Ceará</option> 
+												<option value="DF">Distrito Federal</option> 
+												<option value="ES">Espírito Santo</option> 
+												<option value="GO">Goiás</option> 
+												<option value="MA">Maranhão</option> 
+												<option value="MT">Mato Grosso</option> 
+												<option value="MS">Mato Grosso do Sul</option> 
+												<option value="MG">Minas Gerais</option> 
+												<option value="PA">Pará</option> 
+												<option value="PB">Paraíba</option> 
+												<option value="PR">Paraná</option> 
+												<option value="PE">Pernambuco</option> 
+												<option value="PI">Piauí</option> 
+												<option value="RJ">Rio de Janeiro</option> 
+												<option value="RN">Rio Grande do Norte</option> 
+												<option value="RO">Rondônia</option> 
+												<option value="RS">Rio Grande do Sul</option> 
+												<option value="RR">Roraima</option> 
+												<option value="SC">Santa Catarina</option> 
+												<option value="SE">Sergipe</option> 
+												<option value="SP">São Paulo</option> 
+												<option value="TO">Tocantins</option> 							  			
+											</select>                                            
+			                            </div>
+									</div>
+									<div class="form-group" style="margin-bottom: 5px;">
+										<div class="col-sm-12">
+											<label>Observações</label>
+											<textarea rows="3" class="form-control" id="observacoes" name="observacoes" placeholder="Observações">{if="$registro['observacoes']"}{$registro['observacoes']}{/if}</textarea>
+										</div>
+								  	</div>								  	
+									<div class="form-group" style="margin-bottom: 5px;">
+										<div class="col-sm-6">
+											<label>Imagem 01 </label>
+								  			<input type="file" class="form-control" placeholder="Imagem 01" id="upload01" name="upload01" />
+										</div>
+										<div class="col-sm-6">
+											<label>Imagem 02 </label>
+								  			<input type="file" class="form-control" placeholder="Imagem 02" id="upload02" name="upload02" />
+										</div>
+								  	</div>								  	
+								  	
+									<div class="form-group" style="margin-bottom: 5px;">
+										<div class="col-sm-12">&nbsp;</div>
+								  	</div>	
+								  	
+									<div class="form-group" style="margin-bottom: 5px;">
+										<div class="col-sm-12">
+											<button type="submit" class="btn btn-success" id="btSalvar">Salvar</button>
+											<a href="/admin/cadastro-unidade" title="Cancelar" class="btn btn-default">Voltar</a>
+										</div>
+								  	</div>
+	                               
+									<input type="hidden" name="latitude" id="latitude" value="{if="$registro['latitude']"}{$registro['latitude']}{/if}" />	
+									<input type="hidden" name="longitude" id="longitude" value="{if="$registro['longitude']"}{$registro['longitude']}{/if}" />	                               
+									<input type="hidden" name="idRegistro" id="idRegistro" value="{if="$registro['idUnidade']"}{$registro['idUnidade']}{/if}" />
+									<input type="hidden" name="acao" id="acao" value="{$acao}" />	                               
+	                            </form>								  	
+								  	
+							</div>
+                        </div>
+                    </div>
+		            <!-- end wrapper -->
+		        </div>
+		        <!-- end vertical-box-column -->
+		    </div>
+		    <!-- end vertical-box -->
+		</div>
+		<!-- end #content -->
+		
+	</div>
+	<!-- end page container -->
+	
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="/res/admin/assets/plugins/jquery/jquery-1.9.1.min.js"></script>
+	<script src="/res/admin/assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
+	<script src="/res/admin/assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
+	<script src="/res/admin/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<!--[if lt IE 9]>
+		<script src="/res/admin/assets/crossbrowserjs/html5shiv.js"></script>
+		<script src="/res/admin/assets/crossbrowserjs/respond.min.js"></script>
+		<script src="/res/admin/assets/crossbrowserjs/excanvas.min.js"></script>
+	<![endif]-->
+	<script src="/res/admin/assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="/res/admin/assets/plugins/jquery-cookie/jquery.cookie.js"></script>
+	<!-- ================== END BASE JS ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+	<script src="/res/admin/assets/plugins/jquery-tag-it/js/tag-it.min.js"></script>
+	<script src="/res/admin/assets/js/apps.min.js"></script>
+	<!-- ================== END PAGE LEVEL JS ================== -->
+	
+	<!-- Specific Page Scripts Put Here -->
+	<script src="/res/admin/assets/plugins/jquery-notifyjs/notify.min.js"></script>
+	<script src="/res/admin/assets/plugins/jquery-notifyjs/styles/metro/notify-metro.js"></script>
+	<script src="/res/admin/assets/js/valida.js"></script>
+	<script src="/res/admin/assets/js/jquery.validate.min.js"></script>
+	<script src="/res/admin/assets/js/jquery.mask.min.js" type="text/javascript"></script>
+	
+	<script src="/res/admin/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+	<script src="/res/admin/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.pt-BR.js"></script>
+	<script src="/res/admin/assets/plugins/switchery/switchery.min.js"></script>	
+
+    <script src="/res/admin/assets/js/ckeditor/ckeditor.js"></script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key={$googleAPIkey}"></script>
+	    
+	<script>
+		$(document).ready(function() {
+			App.init();
+
+            $("#telefone").mask('(99) 99999.9999');			
+            $("#cep").mask('99999-999');
+
+	        $('#formConfirma').validate({
+	            rules:{
+	                unidade:{
+	                    required: true,
+	                    minlength: 10,
+	                    maxlength: 100
+	                }	                
+	            },
+	            messages:{
+	            	unidade:{
+	                    required: "Este campo \u00e9 obrigat\u00f3rio.",
+	                    minlength: "Este campo deve ter no m\u00ednimo 10 caracteres.",
+	                    maxlength: "Este campo deve ter no m\u00e1ximo 100 caracteres."
+	                } 	                
+	            }
+	        });
+
+	        $("#upload01").on('change', function () {
+	        	$("#lb01").html('');
+	            if (typeof (FileReader) != "undefined") {	            	
+	                var image_holder = $("#image-01-holder");
+	                image_holder.empty();
+	                var reader = new FileReader();
+	                reader.onload = function (e) {
+	                    $("<img />", {
+	                        "src": e.target.result,
+	                        "style": "max-width: 100%"
+	                    }).appendTo(image_holder);
+	                }
+	                image_holder.show();
+	                reader.readAsDataURL($(this)[0].files[0]);
+		        	$("#lb01").html('01');
+	            } else{
+	                alert("Este navegador nao suporta FileReader.");
+	            }
+	        });		        
+
+	        $("#upload02").on('change', function () {
+	        	$("#lb02").html('');
+	            if (typeof (FileReader) != "undefined") {	            	
+	                var image_holder = $("#image-02-holder");
+	                image_holder.empty();
+	                var reader = new FileReader();
+	                reader.onload = function (e) {
+	                    $("<img />", {
+	                        "src": e.target.result,
+	                        "style": "max-width: 100%"
+	                    }).appendTo(image_holder);
+	                }
+	                image_holder.show();
+	                reader.readAsDataURL($(this)[0].files[0]);
+		        	$("#lb02").html('02');
+	            } else{
+	                alert("Este navegador nao suporta FileReader.");
+	            }
+	        });		        
+	        
+		});
+		
+        function preencheEnderecoCEP(campo){
+            var valor = campo.value;
+            
+            $.getJSON('/funcoes_ajax.php?fn=retornaEnderecoCEP&vl1='+valor, function (dados){
+        	    if(dados.length !== 0){
+        	    	$('#endereco').val(dados['endereco']);
+        	    	$('#numero').val(dados['numero']);
+        	    	$('#complemento').val(dados['complemento']);
+        	    	$('#bairro').val(dados['bairro']);
+        	    	$('#cidade').val(dados['cidade']);
+        	    	$("#estado").val(dados['sigla']).attr("selected", "selected");
+        	    }else{
+        	    	autoHideNotify('warning','CEP não localizado.');
+        	    }
+            });                                
+        }
+		
+		function autoHideNotify(style,msg,position) {
+		 	if(style == "error"){
+				icon = "fa fa-exclamation";
+			}else if(style == "warning"){
+				icon = "fa fa-warning";
+			}else if(style == "success"){
+				icon = "fa fa-check";
+			}else if(style == "info"){
+				icon = "fa fa-question";
+			}else{
+				icon = "fa fa-circle-o";
+			}   
+		    $.notify({
+		        title: 'Esta mensagem irá se ocultar...',
+		        text: msg,
+		        image: "<i class='fa fa-warning'></i>"
+		    }, {
+		        style: 'metro',
+		        className: style,
+		        globalPosition:position,
+		        showAnimation: "show",
+		        showDuration: 0,
+		        hideDuration: 0,
+		        autoHideDelay: 4000,
+		        autoHide: true,
+		        clickToHide: true
+		    });
+		}		
+
+		defaults = {
+		    color             : '#64bd63'
+		  , secondaryColor    : '#dfdfdf'
+		  , jackColor         : '#fff'
+		  , jackSecondaryColor: null
+		  , className         : 'switchery'
+		  , disabled          : false
+		  , disabledOpacity   : 0.5
+		  , speed             : '0.1s'
+		  , size              : 'default'
+		}
+
+	    var map;
+	    var markers = [];
+	    var infoWindow;
+	    
+	    function initialize() {
+	    	var ponto = new google.maps.LatLng( {if="$registro['latitude']"}{$registro['latitude']}{else}{$latitudePadrao}{/if} , {if="$registro['longitude']"}{$registro['longitude']}{else}{$longitudePadrao}{/if});
+	    	
+	        var mapOptions = {
+	          center: ponto,
+	          zoom: 15,
+	          mapTypeId: google.maps.MapTypeId.ROADMAP,
+	          disableDefaultUI: true
+	        };
+	        
+	        map = new google.maps.Map(document.getElementById('mapUnidade'), mapOptions);
+	        infoWindow = new google.maps.InfoWindow();
+	        google.maps.event.trigger(markers[0], 'click');
+		}
+	    
+	    initialize();
+	    
+		function removeMarkers(){
+			for(i=0; i<markers.length; i++){
+				markers[i].setMap(null);
+			}
+		}	
+		
+		function mudarMapa(){
+			var geocoder	= new google.maps.Geocoder();
+			var endereco	= $("#endereco").val();
+			var numero		= $("#numero").val();
+			var bairro		= $("#bairro").val();
+			var cidade		= $("#cidade").val();
+			var estado		= $("#estado").val();		
+			
+			var busca		= endereco+', '+numero+' '+bairro+', '+cidade+' '+estado;
+			 
+			geocoder.geocode({ 'address': busca + ', Brasil', 'region': 'BR' }, function (results, status) {
+				if (status == google.maps.GeocoderStatus.OK) {
+					if (results[0]) {
+						var latitude = results[0].geometry.location.lat();
+						var longitude = results[0].geometry.location.lng();
+
+						map = new google.maps.Map(document.getElementById("mapUnidade"), {
+							center: results[0].geometry.location,
+							zoom: 16,
+							mapTypeId: google.maps.MapTypeId.ROADMAP,
+						});										
+						
+						removeMarkers();					
+						
+						var marker = new google.maps.Marker({
+							position: new google.maps.LatLng(latitude, longitude),
+							icon: '/views/images/marker-verde.png',
+							map: map,
+							draggable: false						
+						});	
+						
+						markers.push(marker);			
+						
+						$("#latitude").val(latitude);	
+						$("#longitude").val(longitude);													
+					}
+				}
+			});			
+		}
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="pt-br">
+<!--<![endif]-->
+
+<head>
+	<meta charset="utf-8" />
+	<title>{$pagina['titulo']}</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<meta content="{$pagina['descricao']}" name="description" />
+	<meta content="{$pagina['autor']}" name="author" />
+	<meta content="{$pagina['palavras']}" name="keywords" />
+	
+	<link rel="shortcut icon" href="/res/admin/assets/img/fav.png" type="image/x-icon">	
+	
+	<!-- ================== BEGIN BASE CSS STYLE ================== -->
+	<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+	<link href="/res/admin/assets/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css" rel="stylesheet" />
+	<link href="/res/admin/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="/res/admin/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+	<link href="/res/admin/assets/css/animate.min.css" rel="stylesheet" />
+	<link href="/res/admin/assets/css/style.css" rel="stylesheet" />
+	<link href="/res/admin/assets/css/style-responsive.min.css" rel="stylesheet" />
+	<link href="/res/admin/assets/css/theme/default.css" rel="stylesheet" id="theme" />
+	<!-- ================== END BASE CSS STYLE ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL CSS STYLE ================== -->
+	<link href="/res/admin/assets/plugins/jquery-notifyjs/styles/metro/notify-metro.css" rel="stylesheet" type="text/css" />	
+	<!-- ================== END PAGE LEVEL CSS STYLE ================== -->
+
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="/res/admin/assets/plugins/pace/pace.min.js"></script>
+	<!-- ================== END BASE JS ================== -->
+	
+</head>
+<body>
+	<!-- begin #page-loader -->
+	<div id="page-loader" class="fade in"><span class="spinner"></span></div>
+	<!-- end #page-loader -->
+	
+	<!-- begin #page-container -->
+	<div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+	
+		<!-- begin #header -->
+		{include="header_include"}
+		<!-- end #header -->
+		
+		<!-- begin #sidebar -->
+		{include="menu"}
+		<!-- end #sidebar -->
+		
+		<!-- begin #content -->
+		<div id="content" class="content">
+		
+			<!-- begin breadcrumb -->
+			<ol class="breadcrumb pull-right">
+				<li><a href="/admin" title="Início">Início</a></li>
+				<li class="active">{$funcionalidade['funcionalidade']}</li>
+			</ol>
+			<!-- end breadcrumb -->
+			<!-- begin page-header -->
+			<h1 class="page-header">{$funcionalidade['funcionalidade']}<small>&nbsp;&nbsp; {$funcionalidade['detalhe']}</small></h1>
+			<!-- end page-header -->
+		
+			<!-- begin profile-container -->
+            <div class="profile-container">
+                <!-- begin profile-section -->
+                <div class="profile-section">
+                    <!-- begin profile-left -->
+                    <div class="profile-left">
+                        <!-- begin profile-image -->
+                        <div class="profile-image" style="text-align: center;">
+                            <img src="/res/admin/assets/img/motorista.jpg" />
+                        </div>
+                        <!-- end profile-image -->
+                        <div class="m-b-10">
+                        	<a href="#modal-imagens" class="btn btn-block btn-sm btn-info" data-toggle="modal">Ver Imagens</a>
+                        </div>
+                        <div class="gallery">
+		                <div class="image" style="padding: 0px;width: 100%;">
+		                    <div class="image-inner">
+			                    <div class="image-info" style="padding-top: 0px;"></div>
+							</div>
+						</div>
+						</div>
+                    </div>
+                    <!-- end profile-left -->
+                    <!-- begin profile-right -->
+                    <div class="profile-right">
+                        <!-- begin profile-info -->
+                        <div class="profile-info">
+                            <!-- begin table -->
+                            <div class="table-responsive">
+                                <table class="table table-profile">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>
+                                                <h4>Registro selecionado <small>cadastrado em 01/01/2021</small></h4>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="highlight">
+                                            <td class="field">RENAVAN</td>
+                                            <td>23345.3454</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="field">Categoria</td>
+                                            <td>Transporte Escolar</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="field">Modelo </td>
+                                            <td>Minivan 12 lugares <strong>Ano / Modelo</strong> 2010 / 2011</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="field">Motoristas</td>
+                                            <td>Fulano da Silva, Zeca Pereira, Beltrano da Silva</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="field">Proprietário</td>
+                                            <td>Antonio Pereira</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- end table -->
+                        </div>
+                        <!-- end profile-info -->
+                    </div>
+                    <!-- end profile-right -->
+                </div>
+                <!-- end profile-section -->
+                
+                    <!-- begin row -->
+                    <div class="row">
+                        <!-- begin col-4 -->
+                        <div class="col-md-12">
+		                    <!-- begin panel -->
+		                    <div class="panel panel-inverse" data-sortable-id="form-stuff-5">
+		                        <div class="panel-body">
+			                        <div class="col-md-6" style="padding-left: 0px;">
+			                        	<h2 style="margin-top: 0px;margin-left: -15px;">Informações Complementares</h2>
+									</div>		                        
+			                        <div class="col-md-6" style="text-align: right;">
+										<button class="btn btn-info m-r-5 m-b-5" type="button" onclick="Javascript: window.location='/admin';">Voltar</button>  
+			                        </div>
+		                        </div>
+		                    </div>
+		                    <!-- end panel -->
+                        </div>
+                        <!-- end col-4 -->
+                    </div>
+                
+                <!-- begin profile-section -->
+                <div class="profile-section">
+                    <!-- begin row -->
+                    <div class="row">
+                        <!-- begin col-4 -->
+                        <div class="col-md-4">
+                            <h4 class="title">Avaliação</h4>
+		                    <div class="panel panel-inverse" data-sortable-id="flot-chart-3">
+		                        <div class="panel-body">
+		                            <div>
+		                                <canvas id="radar-chart" data-render="chart-js"></canvas>
+		                            </div>
+		                            <div>
+		                            	<br><br>
+		                            	<strong>Comparativo entre os número desse registro em comparação aos demais</strong>
+		                            </div>
+		                        </div>
+		                    </div>
+                        </div>
+                        <!-- end col-4 -->
+                        <!-- begin col-4 -->
+                        <div class="col-md-4">
+                            <h4 class="title">Resumo</h4>
+							<!-- begin scrollbar -->
+                            <div data-scrollbar="false" data-height="280px" class="bg-silver">                        
+	                            <table class="table table-hover">
+	                            	<thead>
+	                            		<tr>
+	                            			<th>Item</th>
+	                            			<th style="text-align: center;">Valor</th>
+	                            		</tr>
+	                            	</thead>
+	                            	<tbody>
+	                            		<tr>
+	                            			<td>Combustível consumido</td>
+	                            			<td style="text-align: center;">610,3 (l)</td>
+	                            		</tr>
+	                            		<tr>
+	                            			<td>Custo com Combustível</td>
+	                            			<td style="text-align: center;">R$ 1610,3 (l)</td>
+	                            		</tr>
+	                            		<tr>
+	                            			<td>Manutenções realizadas</td>
+	                            			<td style="text-align: center;">3</td>
+	                            		</tr>
+	                            		<tr>
+	                            			<td>Custo com manutenções</td>
+	                            			<td style="text-align: center;">R$ 5800,4</td>
+	                            		</tr>
+	                            		<tr>
+	                            			<td>Viagens realizadas</td>
+	                            			<td style="text-align: center;">67</td>
+	                            		</tr>
+	                            		<tr>
+	                            			<td>Distancia percorrida</td>
+	                            			<td style="text-align: center;">5200,3 km</td>
+	                            		</tr>
+	                            	</tbody>
+	                            </table>
+							</div>
+                            <!-- end scrollbar -->
+                        </div>
+                        <!-- end col-4 -->                        
+                        <!-- begin col-4 -->
+                        <div class="col-md-4">
+                            <h4 class="title">Secretarias</h4>
+							<!-- begin scrollbar -->
+                            <div data-scrollbar="true" data-height="280px" class="bg-silver">
+	                            <table class="table table-hover">
+	                            	<thead>
+	                            		<tr>
+	                            			<th>Item</th>
+	                            			<th style="text-align: center;">Período</th>
+	                            		</tr>
+	                            	</thead>
+	                            	<tbody>
+	                            		<tr>
+	                            			<td>Secretaria de Educação</td>
+	                            			<td style="text-align: center;">10/03/2020 - </td>
+	                            		</tr>
+	                            		<tr>
+	                            			<td>Secretaria de Saúde</td>
+	                            			<td style="text-align: center;">10/05/2020 - 20/10/2020</td>
+	                            		</tr>
+	                            	</tbody>
+	                            </table>
+                            </div>
+                            <!-- end scrollbar -->
+                        </div>
+                        <!-- end col-4 -->
+                        
+                    </div>
+                    <!-- end row -->
+                </div>
+                <!-- end profile-section -->
+                
+                <!-- begin profile-section -->
+                <div class="profile-section">
+                    <!-- begin row -->
+                    <div class="row">
+                        <!-- begin col-4 -->
+                        <div class="col-md-4">
+                            <h4 class="title">Viagens</h4>
+							<!-- begin scrollbar -->
+                            <div data-scrollbar="true" data-height="280px" class="bg-silver">                        
+	                            <table class="table table-hover">
+	                            	<thead>
+	                            		<tr>
+	                            			<th>Data</th>
+	                            			<th>Descrição</th>
+	                            		</tr>
+	                            	</thead>
+	                            	<tbody>
+	                            		<tr>
+	                            			<td>23/02/2020</td>
+	                            			<td>Rota - Volta do rio, Secretaria de Educação</td>
+	                            		</tr>
+	                            		<tr>
+	                            			<td>20/02/2020</td>
+	                            			<td>Rota - Sítio Riacho, Secretaria de Educação</td>
+	                            		</tr>                            		
+	                            		<tr>
+	                            			<td>19/02/2020</td>
+	                            			<td>Rota - Sítio Riacho, Secretaria de Educação</td>
+	                            		</tr>                            		
+	                            		<tr>
+	                            			<td>06/02/2020</td>
+	                            			<td>Rota - Sítio Riacho, Secretaria de Educação</td>
+	                            		</tr>                            		
+	                            		<tr>
+	                            			<td>05/02/2020</td>
+	                            			<td>Rota - Sítio Riacho, Secretaria de Educação</td>
+	                            		</tr>                            		
+	                            	</tbody>
+	                            </table>
+							</div>
+                            <!-- end scrollbar -->
+                        </div>
+                        <!-- end col-4 -->
+                        <!-- begin col-4 -->
+                        <div class="col-md-4">
+                            <h4 class="title">Abastecimentos</h4>
+							<!-- begin scrollbar -->
+                            <div data-scrollbar="true" data-height="280px" class="bg-silver">                        
+	                            <table class="table table-hover">
+	                            	<thead>
+	                            		<tr>
+	                            			<th>Data</th>
+	                            			<th>Descrição</th>
+	                            		</tr>
+	                            	</thead>
+	                            	<tbody>
+	                            		<tr>
+	                            			<td>23/02/2020</td>
+	                            			<td>Posto Ipiranga R$ 110,00</td>
+	                            		</tr>
+	                            		<tr>
+	                            			<td>20/02/2020</td>
+	                            			<td>Posto Ipiranga R$ 112,00</td>
+	                            		</tr>                            		
+	                            		<tr>
+	                            			<td>19/02/2020</td>
+	                            			<td>Posto Ipiranga R$ 100,00</td>
+	                            		</tr>                            		
+	                            		<tr>
+	                            			<td>06/02/2020</td>
+	                            			<td>Posto Ipiranga R$ 90,00</td>
+	                            		</tr>                            		
+	                            		<tr>
+	                            			<td>05/02/2020</td>
+	                            			<td>Posto Ipiranga R$ 116,00</td>
+	                            		</tr>                            		
+	                            		<tr>
+	                            			<td>04/02/2020</td>
+	                            			<td>Posto Ipiranga R$ 96,00</td>
+	                            		</tr>                            		
+	                            		<tr>
+	                            			<td>03/02/2020</td>
+	                            			<td>Posto Ipiranga R$ 86,00</td>
+	                            		</tr>                            		
+	                            		<tr>
+	                            			<td>03/02/2020</td>
+	                            			<td>Posto Ipiranga R$ 80,00</td>
+	                            		</tr>                            		
+	                            	</tbody>
+	                            </table>
+							</div>
+                            <!-- end scrollbar -->
+                        </div>
+                        <!-- end col-4 -->
+                        <!-- begin col-4 -->
+                        <div class="col-md-4">
+                            <h4 class="title">Manutenções</h4>
+							<!-- begin scrollbar -->
+                            <div data-scrollbar="true" data-height="280px" class="bg-silver">                        
+	                            <table class="table table-hover">
+	                            	<thead>
+	                            		<tr>
+	                            			<th>Data</th>
+	                            			<th>Descrição</th>
+	                            		</tr>
+	                            	</thead>
+	                            	<tbody>
+	                            		<tr>
+	                            			<td>23/02/2020</td>
+	                            			<td>Revisão 100.000 Oficina 3 irmãos R$ 560,00</td>
+	                            		</tr>
+	                            		<tr>
+	                            			<td>20/02/2020</td>
+	                            			<td>Revisão 90.000 Oficina 3 irmãos R$ 400,00</td>
+	                            		</tr>                            		
+	                            		<tr>
+	                            			<td>19/02/2020</td>
+	                            			<td>Revisão 80.000 Oficina 3 irmãos R$ 390,00</td>
+	                            		</tr>                            		
+	                            		<tr>
+	                            			<td>06/02/2020</td>
+	                            			<td>Revisão 70.000 Oficina 3 irmãos R$ 280,00</td>
+	                            		</tr>                            		
+	                            		<tr>
+	                            			<td>05/02/2020</td>
+	                            			<td>Revisão 80.000 Oficina 3 irmãos R$ 410,00</td>
+	                            		</tr>                            		
+	                            	</tbody>
+	                            </table>
+							</div>
+                            <!-- end scrollbar -->
+                        </div>
+                        <!-- end col-4 -->
+                    </div>
+                    <!-- end row -->
+                </div>
+                <!-- end profile-section -->
+                
+                <!-- begin profile-section -->
+                <div class="profile-section">
+                    <!-- begin row -->
+                    <div class="row">
+                        <!-- begin col-4 -->
+                        <div class="col-md-4">
+                            <h4 class="title">Reclamações</h4>
+							<!-- begin scrollbar -->
+                            <div data-scrollbar="true" data-height="280px" class="bg-silver">                        
+	                            <table class="table table-hover">
+	                            	<thead>
+	                            		<tr>
+	                            			<th>Data</th>
+	                            			<th>Descrição</th>
+	                            		</tr>
+	                            	</thead>
+	                            	<tbody>
+	                            		<tr>
+	                            			<td>23/02/2020</td>
+	                            			<td>Atraso de 20 min</td>
+	                            		</tr>
+	                            		<tr>
+	                            			<td>20/02/2020</td>
+	                            			<td>Atraso de 10 min</td>
+	                            		</tr>                            		
+	                            		<tr>
+	                            			<td>19/02/2020</td>
+	                            			<td>Atraso de 10 min</td>
+	                            		</tr>                            		
+	                            		<tr>
+	                            			<td>06/02/2020</td>
+	                            			<td>Atraso de 20 min</td>
+	                            		</tr>                            		
+	                            		<tr>
+	                            			<td>05/02/2020</td>
+	                            			<td>Mau comportamento no trânsito</td>
+	                            		</tr>                            		
+	                            	</tbody>
+	                            </table>
+							</div>
+                            <!-- end scrollbar -->
+                        </div>
+                        <!-- end col-4 -->
+                        <!-- begin col-8 -->
+                        <div class="col-md-8">
+                            <h4 class="title">Linha do Tempo</h4>
+							<!-- begin scrollbar -->
+                            <div data-scrollbar="true" data-height="280px" class="bg-silver">
+								<!-- begin timeline -->
+								<ul class="timeline" style="padding-top: 10px;">
+								    <li>
+								        <!-- begin timeline-time -->
+								        <div class="timeline-time">
+								            <span class="date">Hoje</span>
+								        </div>
+								        <!-- end timeline-time -->
+								        <!-- begin timeline-body -->
+								        <div class="timeline-body">
+								            <div class="timeline-header">
+								                <span class="username"><a href="javascript:;">Abastecimento</a> <small></small></span>
+								            </div>
+								            <div class="timeline-content">
+					                            <p>Posto Ipiranga 40l R$ 90,00.</p>
+								            </div>
+								        </div>
+								        <!-- end timeline-body -->
+								    </li>
+								    <li>
+								        <!-- begin timeline-time -->
+								        <div class="timeline-time">
+								            <span class="date">03/09/2020</span>
+								        </div>
+								        <!-- end timeline-time -->
+								        <!-- begin timeline-body -->
+								        <div class="timeline-body">
+								            <div class="timeline-header">
+								                <span class="username">Revisão mecânica</span>
+								            </div>
+								            <div class="timeline-content">
+					                            <p>Oficina 3 irmãos R$ 560,00</p>
+					                        </div>
+								        </div>
+								        <!-- end timeline-body -->
+								    </li>
+								    <li>
+								        <!-- begin timeline-time -->
+								        <div class="timeline-time">
+								            <span class="date">25/08/2020</span>
+								        </div>
+								        <!-- end timeline-time -->
+								        <!-- begin timeline-body -->
+								        <div class="timeline-body">
+								            <div class="timeline-header">
+								                <span class="username">Reclamação</span>
+								            </div>
+								            <div class="timeline-content">
+					                            <p>O motorista atrasou o horário em 20 min.</p>
+					                        </div>
+								        </div>
+								        <!-- end timeline-body -->
+								    </li>
+								</ul>
+								<!-- end timeline -->
+							</div>
+                            <!-- end scrollbar -->
+                        </div>
+                        <!-- end col-8 -->
+                    </div>
+                    <!-- end row -->
+                    
+                </div>
+                <!-- end profile-section -->
+                
+            </div>
+			<!-- end profile-container -->
+		</div>
+		<!-- end #content -->
+		
+		<!-- begin scroll to top btn -->
+		<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+		<!-- end scroll to top btn -->
+	</div>
+	<!-- end page container -->
+	
+	<!-- #modal-message -->
+	<div class="modal modal-message fade" id="modal-imagens">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					<h4 class="modal-title">Registro selecionado</h4>
+				</div>
+				<div class="modal-body">
+				<!-- begin superbox -->
+				<div class="superbox">
+				    <div class="superbox-list">
+						<img src="/res/admin/assets/plugins/superbox/img/superbox/superbox-thumb-1.jpg" data-img="/res/admin/assets/plugins/superbox/img/superbox/superbox-full-1.jpg" alt="" class="superbox-img" />
+					</div>
+					<div class="superbox-list">
+						<img src="/res/admin/assets/plugins/superbox/img/superbox/superbox-thumb-2.jpg" data-img="/res/admin/assets/plugins/superbox/img/superbox/superbox-full-2.jpg" alt="" class="superbox-img" />
+					</div>
+					<div class="superbox-list">
+						<img src="/res/admin/assets/plugins/superbox/img/superbox/superbox-thumb-3.jpg" data-img="/res/admin/assets/plugins/superbox/img/superbox/superbox-full-3.jpg" alt="" class="superbox-img" />
+					</div>
+					<div class="superbox-list">
+						<img src="/res/admin/assets/plugins/superbox/img/superbox/superbox-thumb-4.jpg" data-img="/res/admin/assets/plugins/superbox/img/superbox/superbox-full-4.jpg" alt="" class="superbox-img" />
+					</div>
+					<div class="superbox-list">
+						<img src="/res/admin/assets/plugins/superbox/img/superbox/superbox-thumb-5.jpg" data-img="/res/admin/assets/plugins/superbox/img/superbox/superbox-full-5.jpg" alt="" class="superbox-img" />
+					</div>
+					<div class="superbox-list">
+						<img src="/res/admin/assets/plugins/superbox/img/superbox/superbox-thumb-6.jpg" data-img="/res/admin/assets/plugins/superbox/img/superbox/superbox-full-6.jpg" alt="" class="superbox-img" />
+					</div>
+					<div class="superbox-list">
+						<img src="/res/admin/assets/plugins/superbox/img/superbox/superbox-thumb-7.jpg" data-img="/res/admin/assets/plugins/superbox/img/superbox/superbox-full-7.jpg" alt="" class="superbox-img" />
+					</div>
+					<div class="superbox-list">
+						<img src="/res/admin/assets/plugins/superbox/img/superbox/superbox-thumb-8.jpg" data-img="/res/admin/assets/plugins/superbox/img/superbox/superbox-full-8.jpg" alt="" class="superbox-img" />
+					</div>
+					<div class="superbox-list">
+						<img src="/res/admin/assets/plugins/superbox/img/superbox/superbox-thumb-9.jpg" data-img="/res/admin/assets/plugins/superbox/img/superbox/superbox-full-9.jpg" alt="" class="superbox-img" />
+					</div>
+					<div class="superbox-list">
+						<img src="/res/admin/assets/plugins/superbox/img/superbox/superbox-thumb-10.jpg" data-img="/res/admin/assets/plugins/superbox/img/superbox/superbox-full-10.jpg" alt="" class="superbox-img" />
+					</div>
+					<div class="superbox-list">
+						<img src="/res/admin/assets/plugins/superbox/img/superbox/superbox-thumb-11.jpg" data-img="/res/admin/assets/plugins/superbox/img/superbox/superbox-full-11.jpg" alt="" class="superbox-img" />
+					</div>
+					<div class="superbox-list">
+						<img src="/res/admin/assets/plugins/superbox/img/superbox/superbox-thumb-12.jpg" data-img="/res/admin/assets/plugins/superbox/img/superbox/superbox-full-12.jpg" alt="" class="superbox-img" />
+					</div>
+				</div>
+				<!-- end superbox -->
+				
+				</div>
+				<div class="modal-footer">
+					<a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Fechar</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="/res/admin/assets/plugins/jquery/jquery-1.9.1.min.js"></script>
+	<script src="/res/admin/assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
+	<script src="/res/admin/assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
+	<script src="/res/admin/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<!--[if lt IE 9]>
+		<script src="/res/admin/assets/crossbrowserjs/html5shiv.js"></script>
+		<script src="/res/admin/assets/crossbrowserjs/respond.min.js"></script>
+		<script src="/res/admin/assets/crossbrowserjs/excanvas.min.js"></script>
+	<![endif]-->
+	<script src="/res/admin/assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="/res/admin/assets/plugins/jquery-cookie/jquery.cookie.js"></script>
+	<script src="/res/admin/assets/plugins/chart-js/chart.js"></script>	
+	<!-- ================== END BASE JS ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+	<script src="/res/admin/assets/js/apps.js"></script>
+	<script src="/res/admin/assets/js/frotas.demo.js"></script>	
+	<!-- ================== END PAGE LEVEL JS ================== -->
+	
+	<!-- Specific Page Scripts Put Here -->
+	<script src="/res/admin/assets/js/simpleAutoComplete.js"></script>  
+	<script src="/res/admin/assets/js/valida.js"></script>
+	<script src="/res/admin/assets/js/jquery.validate.min.js"></script>
+	<script src="/res/admin/assets/plugins/jquery-notifyjs/notify.min.js"></script>
+	<script src="/res/admin/assets/plugins/jquery-notifyjs/styles/metro/notify-metro.js"></script>
+	<script src="/res/admin/assets/js/jquery.mask.min.js" type="text/javascript"></script>
+	
+	<script src="/res/admin/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+	<script src="/res/admin/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.pt.js"></script>
+		
+	<script>
+		$(document).ready(function() {
+			App.init();
+			ChartJs.init();
+		});
+	
+	</script>
+</body>
+
+</html>

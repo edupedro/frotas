@@ -1,0 +1,108 @@
+<div id="sidebar" class="sidebar">
+    <!-- begin sidebar scrollbar -->
+    <div data-scrollbar="true" data-height="100%">
+        <!-- begin sidebar user -->
+        <ul class="nav">
+            <li class="nav-profile">
+                <div class="image">
+                    <a href="#"><img src="/views/images/pessoas/{$sessao['imagem']}" alt="" /></a>
+                </div>
+                <div class="info">
+                    {$sessao['nome']}
+                    <small>{$sessao['perfil']}</small>
+                </div>
+            </li>
+        </ul>
+        <!-- end sidebar user -->
+        <!-- begin sidebar nav -->
+        <ul class="nav">
+            <li class="nav-header">Nevegação</li>            
+            <li class="has-sub "><a href="/dashboard" title="Início"><i class="fa fa-laptop"></i><span>Início</span></a></li>
+           	{loop="$sessao['Funcionalidades']" as $itemMenu}
+           		{if="$itemMenu['codigo']=='viagem_lista'"}<li class="has-sub "><a href="{$itemMenu['pagina']}" title="{$itemMenu['funcionalidade']}"><i class="fa fa-car"></i>{$itemMenu['funcionalidade']}</a></li>{/if}
+           		{if="$itemMenu['codigo']=='abastecimento_lista'"}<li class="has-sub "><a href="{$itemMenu['pagina']}" title="{$itemMenu['funcionalidade']}"><i class="fa fa-money"></i>{$itemMenu['funcionalidade']}</a></li>{/if}
+           		{if="$itemMenu['codigo']=='incidente_lista'"}<li class="has-sub "><a href="{$itemMenu['pagina']}" title="{$itemMenu['funcionalidade']}"><i class="fa fa-info-circle"></i>{$itemMenu['funcionalidade']}</a></li>{/if}
+           		{if="$itemMenu['codigo']=='mapa_deslocamentos'"}<li class="has-sub "><a href="{$itemMenu['pagina']}" title="{$itemMenu['funcionalidade']}"><i class="fa fa-map-marker"></i>{$itemMenu['funcionalidade']}</a></li>{/if}
+           	{/loop}
+
+            <li class="has-sub ">
+                <a href="javascript:;">
+                    <b class="caret pull-right"></b>
+                    <i class="fa fa-book"></i>
+                    <span>Fichas</span>
+                </a>
+                <ul class="sub-menu">
+           			{loop="$sessao['Funcionalidades']" as $itemMenu}
+			            {if="$itemMenu['codigo']=='veiculo_ficha'"}<li><a href="{$itemMenu['pagina']}" title="{$itemMenu['funcionalidade']}"> {$itemMenu['funcionalidade']}</a></li>{/if}                
+			            {if="$itemMenu['codigo']=='motorista_ficha'"}<li><a href="{$itemMenu['pagina']}" title="{$itemMenu['funcionalidade']}"> {$itemMenu['funcionalidade']}</a></li>{/if}
+			            {if="$itemMenu['codigo']=='proprietario_ficha'"}<li><a href="{$itemMenu['pagina']}" title="{$itemMenu['funcionalidade']}"> {$itemMenu['funcionalidade']}</a></li>{/if}                
+			            {if="$itemMenu['codigo']=='unidade_ficha'"}<li><a href="{$itemMenu['pagina']}" title="{$itemMenu['funcionalidade']}"> {$itemMenu['funcionalidade']}</a></li>{/if}
+	                {/loop}
+                </ul>
+            </li>
+           	
+            <li class="has-sub ">
+                <a href="javascript:;">
+                    <b class="caret pull-right"></b>
+                    <i class="fa fa-cogs"></i>
+                    <span>Administração</span>
+                </a>
+                <ul class="sub-menu">
+           			{loop="$sessao['Funcionalidades']" as $itemMenu}
+			            {if="$itemMenu['codigo']=='rotas_locais'"}<li><a href="{$itemMenu['pagina']}" title="{$itemMenu['funcionalidade']}"> {$itemMenu['funcionalidade']}</a></li>{/if}                
+			            {if="$itemMenu['codigo']=='unidades_veiculos'"}<li><a href="{$itemMenu['pagina']}" title="{$itemMenu['funcionalidade']}"> {$itemMenu['funcionalidade']}</a></li>{/if}
+			            {if="$itemMenu['codigo']=='motoristas_veiculos'"}<li><a href="{$itemMenu['pagina']}" title="{$itemMenu['funcionalidade']}"> {$itemMenu['funcionalidade']}</a></li>{/if}                
+	                {/loop}
+                </ul>
+            </li>
+
+            <li class="has-sub ">
+                <a href="javascript:;">
+                    <b class="caret pull-right"></b>
+                    <i class="fa fa-edit"></i>
+                    <span>Cadastros</span>
+                </a>
+                <ul class="sub-menu">
+           			{loop="$sessao['Funcionalidades']" as $itemMenu}
+			            {if="$itemMenu['codigo']=='unidade_cadastro'"}<li><a href="{$itemMenu['pagina']}" title="{$itemMenu['funcionalidade']}"> {$itemMenu['funcionalidade']}</a></li>{/if}           			
+			            {if="$itemMenu['codigo']=='local_cadastro'"}<li><a href="{$itemMenu['pagina']}" title="{$itemMenu['funcionalidade']}"> {$itemMenu['funcionalidade']}</a></li>{/if}
+			            {if="$itemMenu['codigo']=='rota_cadastro'"}<li><a href="{$itemMenu['pagina']}" title="{$itemMenu['funcionalidade']}"> {$itemMenu['funcionalidade']}</a></li>{/if}
+			            {if="$itemMenu['codigo']=='proprietario_cadastro'"}<li><a href="{$itemMenu['pagina']}" title="{$itemMenu['funcionalidade']}"> {$itemMenu['funcionalidade']}</a></li>{/if}			            			            
+			            {if="$itemMenu['codigo']=='veiculo_cadastro'"}<li><a href="{$itemMenu['pagina']}" title="{$itemMenu['funcionalidade']}"> {$itemMenu['funcionalidade']}</a></li>{/if}
+			            {if="$itemMenu['codigo']=='motorista_cadastro'"}<li><a href="{$itemMenu['pagina']}" title="{$itemMenu['funcionalidade']}"> {$itemMenu['funcionalidade']}</a></li>{/if}
+			            {if="$itemMenu['codigo']=='fornecedor_cadastro'"}<li><a href="{$itemMenu['pagina']}" title="{$itemMenu['funcionalidade']}"> {$itemMenu['funcionalidade']}</a></li>{/if}
+	                {/loop}
+                </ul>
+            </li>
+            
+           	{if="$isAdmin"}
+            <li class="has-sub ">
+                <a href="javascript:;">
+                    <b class="caret pull-right"></b>
+                    <i class="fa fa-cubes"></i>
+                    <span>Tabelas</span>
+                </a>
+                <ul class="sub-menu">
+           			{loop="$sessao['Funcionalidades']" as $itemMenu}
+	                    {if="$itemMenu['codigo']=='perfil_manter'"}<li><a href="{$itemMenu['pagina']}" title="{$itemMenu['funcionalidade']}"> {$itemMenu['funcionalidade']}</a></li>{/if}
+	                    {if="$itemMenu['codigo']=='usuario_manter'"}<li><a href="{$itemMenu['pagina']}" title="{$itemMenu['funcionalidade']}"> {$itemMenu['funcionalidade']}</a></li>{/if}
+	                    {if="$itemMenu['codigo']=='parametro_manter'"}<li><a href="{$itemMenu['pagina']}" title="{$itemMenu['funcionalidade']}"> {$itemMenu['funcionalidade']}</a></li>{/if}
+	                    {if="$itemMenu['codigo']=='fornecedor_tipo_manter'"}<li><a href="{$itemMenu['pagina']}" title="{$itemMenu['funcionalidade']}"> {$itemMenu['funcionalidade']}</a></li>{/if}
+	                    {if="$itemMenu['codigo']=='veiculo_incidente_tipo_manter'"}<li><a href="{$itemMenu['pagina']}" title="{$itemMenu['funcionalidade']}"> {$itemMenu['funcionalidade']}</a></li>{/if}
+	                {/loop}
+                </ul>
+            </li>
+           	{/if}
+            <li class="has-sub">
+                <a href="/logout"><i class="fa fa-times-circle"></i><span>Sair</span></a>
+            </li>										
+            
+            <!-- begin sidebar minify button -->
+            <li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li>
+            <!-- end sidebar minify button -->
+        </ul>
+        <!-- end sidebar nav -->
+    </div>
+    <!-- end sidebar scrollbar -->
+</div>
+<div class="sidebar-bg"></div>
