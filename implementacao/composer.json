@@ -1,23 +1,22 @@
 {
-    "name": "edupedro/frotas",
-    "authors": [
-        {
-            "name": "Eduardo Andrade",
-            "email": "contato@grupomqs.com.br"
-        }
-    ],
-    "require": {
-    	"phpmailer/phpmailer":"5.2.27",
-    	"slim/slim":"2.0",
-    	"rain/raintpl":"3.0.0",
-    	"fpdf/fpdf":"1.8.1",
-    	"phpqrcode/phpqrcode":"dev-master",
-		"guzzlehttp/guzzle": "*",
-		"paypal/rest-api-sdk-php":"*"		
-    },
-    "autoload": {
-        "psr-4": {
-            "MQS\\": "vendor\\mqs\\php-classes\\src"
-        }
-    }
+	"name" : "edupedro/frotas",
+	"authors" : [{
+			"name" : "Eduardo Andrade",
+			"email" : "contato@grupomqs.com.br"
+		}
+	],
+	"require" : {
+		"phpmailer/phpmailer" : "5.2.27",
+		"slim/slim" : "2.0",
+		"rain/raintpl" : "3.0.0",
+		"fpdf/fpdf" : "1.8.1",
+		"phpqrcode/phpqrcode" : "dev-master",
+		"guzzlehttp/guzzle" : "*",
+		"piggly/php-pix": "*"	
+	},	
+	"autoload" : {
+		"psr-4" : {
+			"MQS\\" : "vendor\\mqs\\php-classes\\src"
+		}
+	}
 }

@@ -14,11 +14,16 @@ class ComposerStaticInitf02538ace1b82ade77a563112529ae4f
     );
 
     public static $prefixLengthsPsr4 = array (
+        'c' => 
+        array (
+            'chillerlan\\Settings\\' => 20,
+            'chillerlan\\QRCode\\' => 18,
+        ),
         'P' => 
         array (
-            'Psr\\Log\\' => 8,
             'Psr\\Http\\Message\\' => 17,
             'Psr\\Http\\Client\\' => 16,
+            'Piggly\\Pix\\' => 11,
         ),
         'M' => 
         array (
@@ -37,9 +42,13 @@ class ComposerStaticInitf02538ace1b82ade77a563112529ae4f
     );
 
     public static $prefixDirsPsr4 = array (
-        'Psr\\Log\\' => 
+        'chillerlan\\Settings\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
+            0 => __DIR__ . '/..' . '/chillerlan/php-settings-container/src',
+        ),
+        'chillerlan\\QRCode\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/chillerlan/php-qrcode/src',
         ),
         'Psr\\Http\\Message\\' => 
         array (
@@ -49,6 +58,10 @@ class ComposerStaticInitf02538ace1b82ade77a563112529ae4f
         'Psr\\Http\\Client\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/http-client/src',
+        ),
+        'Piggly\\Pix\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/piggly/php-pix/src',
         ),
         'MQS\\' => 
         array (
@@ -85,13 +98,6 @@ class ComposerStaticInitf02538ace1b82ade77a563112529ae4f
             'Rain' => 
             array (
                 0 => __DIR__ . '/..' . '/rain/raintpl/library',
-            ),
-        ),
-        'P' => 
-        array (
-            'PayPal' => 
-            array (
-                0 => __DIR__ . '/..' . '/paypal/rest-api-sdk-php/lib',
             ),
         ),
     );
