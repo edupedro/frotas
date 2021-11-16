@@ -48,8 +48,13 @@ $app->post('/usuario_perfil', function() use ($app) { (new UsuarioCTRL(new Banco
 $app->get('/ativar/:idRegistro', function($idRegistro = NULL) use ($app) { (new UsuarioCTRL(new Banco(ConfigIni::AMBIENTE), new Datas(), new Textos()))->ativar($idRegistro); });
 /** Fim rotas do painel **/
 
+/** Rotas de fichas **/
 
+/** fim rotas de fichas **/
+$app->get('/admin/veiculo_ficha', function() use ($app) { (new VeiculoCTRL(new Banco(ConfigIni::AMBIENTE), new Datas(), new Textos()))->getFichaVeiculo(); });
 /** Rotas da área administrativa **/
+
+
 // menu tabelas
 $app->get('/admin/parametro_tabelas', function() use ($app) { (new ParametroCTRL(new Banco(ConfigIni::AMBIENTE), new Datas(), new Textos()))->getListaRegistro(); });
 $app->post('/admin/parametro_tabelas', function() use ($app) { (new ParametroCTRL(new Banco(ConfigIni::AMBIENTE), new Datas(), new Textos()))->setRegistro($_POST,$_FILES); });

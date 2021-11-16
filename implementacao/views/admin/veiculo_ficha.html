@@ -63,6 +63,37 @@
 			<h1 class="page-header">{$funcionalidade['funcionalidade']}<small>&nbsp;&nbsp; {$funcionalidade['detalhe']}</small></h1>
 			<!-- end page-header -->
 		
+			{if="$processamento==1"}
+              	{if="$temErro==1"}
+					<div id="msgErro1" class="alert alert-danger fade in" style="display: block;">
+						<strong>Erro</strong><br>{$msgProcessamento}
+					</div>
+				{else}
+					<div id="msgErro2" class="alert alert-success fade in" style="display: block;">
+						{$msgProcessamento}
+					</div>					
+				{/if}
+            {/if}	                			
+
+			<!-- begin profile-container -->
+            <div class="profile-container" style="margin-bottom: 10px;">
+                <!-- begin profile-section -->
+                <div class="profile-section">
+                    <div id="horizontal-form">
+						<form class="form-inline" action="" method="POST" name="formConsulta" id="formConsulta" enctype="multipart/form-data">
+							<div class="form-group m-r-10">
+								<input id="placa" class="form-control" type="text" name="placa" placeholder="Placa" onblur="maiuscula(this);" {if="$registro['placa']"}value="{$registro['placa']}"{/if} />
+							</div>
+							<button type="submit" class="btn btn-success" id="btSalvar">Buscar</button>
+						</form>                    
+					</div>
+					<!-- end horizontal-form -->
+            	</div>
+            	<!-- end col -->
+			</div>
+        	<!-- end row -->
+
+		
 			<!-- begin profile-container -->
             <div class="profile-container">
                 <!-- begin profile-section -->
@@ -165,10 +196,6 @@
 		                            <div>
 		                                <canvas id="radar-chart" data-render="chart-js"></canvas>
 		                            </div>
-		                            <div>
-		                            	<br><br>
-		                            	<strong>Comparativo entre os número desse registro em comparação aos demais</strong>
-		                            </div>
 		                        </div>
 		                    </div>
                         </div>
@@ -187,28 +214,28 @@
 	                            	</thead>
 	                            	<tbody>
 	                            		<tr>
-	                            			<td>Combustível consumido</td>
-	                            			<td style="text-align: center;">610,3 (l)</td>
+	                            			<td>Combustível consumido (em litros)</td>
+	                            			<td style="text-align: center;">610,3</td>
 	                            		</tr>
 	                            		<tr>
-	                            			<td>Custo com Combustível</td>
-	                            			<td style="text-align: center;">R$ 1610,3 (l)</td>
+	                            			<td>Gasto com Combustível (em R$)</td>
+	                            			<td style="text-align: center;">1.610,3</td>
 	                            		</tr>
 	                            		<tr>
 	                            			<td>Manutenções realizadas</td>
 	                            			<td style="text-align: center;">3</td>
 	                            		</tr>
 	                            		<tr>
-	                            			<td>Custo com manutenções</td>
-	                            			<td style="text-align: center;">R$ 5800,4</td>
+	                            			<td>Custo com manutenções (em R$)</td>
+	                            			<td style="text-align: center;">5.800,4</td>
 	                            		</tr>
 	                            		<tr>
 	                            			<td>Viagens realizadas</td>
 	                            			<td style="text-align: center;">67</td>
 	                            		</tr>
 	                            		<tr>
-	                            			<td>Distancia percorrida</td>
-	                            			<td style="text-align: center;">5200,3 km</td>
+	                            			<td>Distancia percorrida (em km)</td>
+	                            			<td style="text-align: center;">5.200,3</td>
 	                            		</tr>
 	                            	</tbody>
 	                            </table>
@@ -218,7 +245,7 @@
                         <!-- end col-4 -->                        
                         <!-- begin col-4 -->
                         <div class="col-md-4">
-                            <h4 class="title">Secretarias</h4>
+                            <h4 class="title">Unidades</h4>
 							<!-- begin scrollbar -->
                             <div data-scrollbar="true" data-height="280px" class="bg-silver">
 	                            <table class="table table-hover">
@@ -230,11 +257,11 @@
 	                            	</thead>
 	                            	<tbody>
 	                            		<tr>
-	                            			<td>Secretaria de Educação</td>
+	                            			<td>Departamento de transportes</td>
 	                            			<td style="text-align: center;">10/03/2020 - </td>
 	                            		</tr>
 	                            		<tr>
-	                            			<td>Secretaria de Saúde</td>
+	                            			<td>Secretaria</td>
 	                            			<td style="text-align: center;">10/05/2020 - 20/10/2020</td>
 	                            		</tr>
 	                            	</tbody>
@@ -393,7 +420,7 @@
                     <div class="row">
                         <!-- begin col-4 -->
                         <div class="col-md-4">
-                            <h4 class="title">Reclamações</h4>
+                            <h4 class="title">Incidentes</h4>
 							<!-- begin scrollbar -->
                             <div data-scrollbar="true" data-height="280px" class="bg-silver">                        
 	                            <table class="table table-hover">
@@ -522,41 +549,23 @@
 				<div class="modal-body">
 				<!-- begin superbox -->
 				<div class="superbox">
-				    <div class="superbox-list">
-						<img src="/res/admin/assets/plugins/superbox/img/superbox/superbox-thumb-1.jpg" data-img="/res/admin/assets/plugins/superbox/img/superbox/superbox-full-1.jpg" alt="" class="superbox-img" />
-					</div>
-					<div class="superbox-list">
-						<img src="/res/admin/assets/plugins/superbox/img/superbox/superbox-thumb-2.jpg" data-img="/res/admin/assets/plugins/superbox/img/superbox/superbox-full-2.jpg" alt="" class="superbox-img" />
-					</div>
-					<div class="superbox-list">
-						<img src="/res/admin/assets/plugins/superbox/img/superbox/superbox-thumb-3.jpg" data-img="/res/admin/assets/plugins/superbox/img/superbox/superbox-full-3.jpg" alt="" class="superbox-img" />
-					</div>
-					<div class="superbox-list">
-						<img src="/res/admin/assets/plugins/superbox/img/superbox/superbox-thumb-4.jpg" data-img="/res/admin/assets/plugins/superbox/img/superbox/superbox-full-4.jpg" alt="" class="superbox-img" />
-					</div>
-					<div class="superbox-list">
-						<img src="/res/admin/assets/plugins/superbox/img/superbox/superbox-thumb-5.jpg" data-img="/res/admin/assets/plugins/superbox/img/superbox/superbox-full-5.jpg" alt="" class="superbox-img" />
-					</div>
-					<div class="superbox-list">
-						<img src="/res/admin/assets/plugins/superbox/img/superbox/superbox-thumb-6.jpg" data-img="/res/admin/assets/plugins/superbox/img/superbox/superbox-full-6.jpg" alt="" class="superbox-img" />
-					</div>
-					<div class="superbox-list">
-						<img src="/res/admin/assets/plugins/superbox/img/superbox/superbox-thumb-7.jpg" data-img="/res/admin/assets/plugins/superbox/img/superbox/superbox-full-7.jpg" alt="" class="superbox-img" />
-					</div>
-					<div class="superbox-list">
-						<img src="/res/admin/assets/plugins/superbox/img/superbox/superbox-thumb-8.jpg" data-img="/res/admin/assets/plugins/superbox/img/superbox/superbox-full-8.jpg" alt="" class="superbox-img" />
-					</div>
-					<div class="superbox-list">
-						<img src="/res/admin/assets/plugins/superbox/img/superbox/superbox-thumb-9.jpg" data-img="/res/admin/assets/plugins/superbox/img/superbox/superbox-full-9.jpg" alt="" class="superbox-img" />
-					</div>
-					<div class="superbox-list">
-						<img src="/res/admin/assets/plugins/superbox/img/superbox/superbox-thumb-10.jpg" data-img="/res/admin/assets/plugins/superbox/img/superbox/superbox-full-10.jpg" alt="" class="superbox-img" />
-					</div>
-					<div class="superbox-list">
-						<img src="/res/admin/assets/plugins/superbox/img/superbox/superbox-thumb-11.jpg" data-img="/res/admin/assets/plugins/superbox/img/superbox/superbox-full-11.jpg" alt="" class="superbox-img" />
-					</div>
-					<div class="superbox-list">
-						<img src="/res/admin/assets/plugins/superbox/img/superbox/superbox-thumb-12.jpg" data-img="/res/admin/assets/plugins/superbox/img/superbox/superbox-full-12.jpg" alt="" class="superbox-img" />
+					<div class="table-responsive">
+						<table class="table">
+	                       <tbody>
+	                           <tr>
+	                               <td><img src="/views/images/veiculos/veiculo_121615813448.png" alt="" /></td>
+	                               <td><img src="/views/images/veiculos/veiculo_281615813448.png" alt="" />1</td>
+	                           </tr>
+	                           <tr>
+	                               <td><img src="/views/images/veiculos/veiculo_121615813448.png" alt="" /></td>
+	                               <td><img src="/views/images/veiculos/veiculo_121615813448.png" alt="" /></td>
+	                           </tr>
+	                           <tr>
+	                               <td><img src="/views/images/veiculos/veiculo_121615813448.png" alt="" /></td>
+	                               <td><img src="/views/images/veiculos/veiculo_121615813448.png" alt="" /></td>
+	                           </tr>
+	                       </tbody>
+	                   </table>
 					</div>
 				</div>
 				<!-- end superbox -->

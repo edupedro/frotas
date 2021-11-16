@@ -40,11 +40,39 @@ class VeiculoCTRL extends ModelCTRL {
      *
      * @return object
      */
-    function getProprietarioCTRL(){
+    private function getProprietarioCTRL(){
         if(is_null($this->proprietarioCTRL)){
             $this->proprietarioCTRL = new ProprietarioCTRL($this->getBanco(), $this->getDatas(), $this->getTextos());
         }
         return $this->proprietarioCTRL;
+    }
+    
+    /**
+     * Abrir página da ficha do veículo
+     * 
+     * @return void
+     */
+    public function getFichaVeiculo(){
+        UsuarioCTRL::verifyLogin();
+        
+        $pagina = $this->carregarParametrosPagina();
+        $sessao = $_SESSION[UsuarioCTRL::SESSION];
+        $funcionalidade = $this->getAcessoriosCTRL()->retornaFuncionalidades(" AND tab.codigo = 'veiculo_ficha' ");
+        $isAdmin = $this->isAdmin($sessao);
+        
+        $page = new PageAdmin([
+            "header" => false,
+            "footer" => false
+        ]);
+        $page->setTpl("veiculo_ficha", array(
+            "pagina" => $pagina,
+            "sessao" => $sessao,
+            "funcionalidade" => $funcionalidade[0],
+            "isAdmin" => $isAdmin,
+            "latitudePadrao" => $this->getParametroCTRL()->retornaValor("latitude_padrao"),
+            "longitudePadrao" => $this->getParametroCTRL()->retornaValor("longitude_padrao"),
+            "googleAPIkey" => $this->getParametroCTRL()->retornaValor("key_api_google_maps"),
+        ));        
     }
     
     /**
@@ -58,7 +86,7 @@ class VeiculoCTRL extends ModelCTRL {
                 
         $pagina = $this->carregarParametrosPagina();
         $sessao = $_SESSION[UsuarioCTRL::SESSION];
-        $funcionalidade = $this->getAcessoriosCTRL()->retornaFuncionalidades(" AND tab.codigo = 'cadastro_veiculo' ");
+        $funcionalidade = $this->getAcessoriosCTRL()->retornaFuncionalidades(" AND tab.codigo = 'veiculo_cadastro' ");
         $isAdmin = $this->isAdmin($sessao);
         
         $listaProprietario = $this->getProprietarioCTRL()->retornaLista(" AND tab.ativo = 'true' ORDER BY tab.descricao ");      
@@ -75,7 +103,7 @@ class VeiculoCTRL extends ModelCTRL {
             "header" => false,
             "footer" => false
         ]);
-        $page->setTpl("veiculo_manter", array(
+        $page->setTpl("veiculo_cadastro", array(
             "pagina" => $pagina,
             "sessao" => $sessao,
             "funcionalidade" => $funcionalidade[0],
@@ -96,11 +124,11 @@ class VeiculoCTRL extends ModelCTRL {
      * @param int $idRegistro
      * @return void
      */
-    function getRegistro($idRegistro = NULL){
+    public function getRegistro($idRegistro = NULL){
         UsuarioCTRL::verifyLogin();
         
         $pagina = $this->carregarParametrosPagina();
-        $funcionalidade = $this->getAcessoriosCTRL()->retornaFuncionalidades(" AND tab.codigo = 'cadastro_veiculo' ");
+        $funcionalidade = $this->getAcessoriosCTRL()->retornaFuncionalidades(" AND tab.codigo = 'veiculo_cadastro' ");
         $sessao = $_SESSION[UsuarioCTRL::SESSION];
         $isAdmin = $this->isAdmin($sessao);
         
@@ -120,7 +148,7 @@ class VeiculoCTRL extends ModelCTRL {
         }
         
         $page = new PageAdmin();
-        $page->setTpl("veiculo_registro", array(
+        $page->setTpl("veiculo_cadastro_registro", array(
             "pagina" => $pagina,
             "sessao" => $sessao,
             "funcionalidade" => $funcionalidade[0],
@@ -144,7 +172,7 @@ class VeiculoCTRL extends ModelCTRL {
         
         $pagina = $this->carregarParametrosPagina();
         $sessao = $_SESSION[UsuarioCTRL::SESSION];
-        $funcionalidade = $this->getAcessoriosCTRL()->retornaFuncionalidades(" AND tab.codigo = 'cadastro_veiculo' ");
+        $funcionalidade = $this->getAcessoriosCTRL()->retornaFuncionalidades(" AND tab.codigo = 'veiculo_cadastro' ");
         $isAdmin = $this->isAdmin($sessao);
         
         $listaProprietario = $this->getProprietarioCTRL()->retornaLista(" ORDER BY tab.descricao ");
@@ -265,7 +293,7 @@ class VeiculoCTRL extends ModelCTRL {
         }
         
         $page = new PageAdmin();
-        $page->setTpl("veiculo_manter", array(
+        $page->setTpl("veiculo_cadastro", array(
             "pagina" => $pagina,
             "sessao" => $sessao,
             "funcionalidade" => $funcionalidade[0],
@@ -289,7 +317,7 @@ class VeiculoCTRL extends ModelCTRL {
      * @param int $id
      * @return array
      */
-    function retornaID($id, $lazy = FALSE){
+    public function retornaID($id, $lazy = FALSE){
         $retorno = array();
         
         try {
@@ -311,7 +339,7 @@ class VeiculoCTRL extends ModelCTRL {
      * @param string $where
      * @return array
      */
-    function retornaLista($where, $lazy = FALSE){
+    public function retornaLista($where, $lazy = FALSE){
         try {
             if(is_null($lazy)){
                 $lazy = FALSE;
@@ -328,7 +356,7 @@ class VeiculoCTRL extends ModelCTRL {
      * @param string $where
      * @return array
      */
-    function retornaQTD($where){
+    public function retornaQTD($where){
         try {
             return $this->veiculoDAO->retornaQTD($where);
         } catch (\Exception $e) {
@@ -343,7 +371,7 @@ class VeiculoCTRL extends ModelCTRL {
      * @param array $tipo
      * @return array
      */
-    function validacoes($campos,$tipo){
+    private function validacoes($campos,$tipo){
         $retorno	= array();
         $itens		= array();
         
@@ -382,7 +410,7 @@ class VeiculoCTRL extends ModelCTRL {
      * @param array $campos
      * @return array
      */
-    function inserir($campos){
+    public function inserir($campos){
         $novoId		= 0;
         $retorno	= array();
         
@@ -486,7 +514,7 @@ class VeiculoCTRL extends ModelCTRL {
      * @param array $campos
      * @return array
      */
-    function alterar($campos){
+    public function alterar($campos){
         $retorno	= array();
         
         if(empty($campos['idAnotador'])){
@@ -603,7 +631,7 @@ class VeiculoCTRL extends ModelCTRL {
      *
      * @return void
      */
-    function __destruct(){            
+    public function __destruct(){            
         
     }        
     

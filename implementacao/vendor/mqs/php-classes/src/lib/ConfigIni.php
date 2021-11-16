@@ -16,8 +16,8 @@ class ConfigIni{
     const ITENS_TABELAS = 10;
     const IDIOMA_PADRAO = '';
     
-    const TITULO_RELATORIO              = 'Prefeitura';
-    const googleAPIkey		            = 'AIzaSyACz_mdFdVmY6rJX8wcawwzV2SY26IqE38';
+    const TITULO_RELATORIO              = 'Frotas';
+    const googleAPIkey		            = '';
     const API_GOOGLE_MARKERCLUSTERER    = "/res/admin/assets/js/markerclusterer/src/markerclusterer.js";
     const API_GOOGLE_INFOBUBBLE         = "/res/admin/assets/js/infobubble/src/infobubble.js";
     
